@@ -1,0 +1,103 @@
+<%- include('partials/header') %>
+
+  <!-- Inicio NavBar -->
+  <div class="w-full bg-black">
+    <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
+      <a href="/" class="flex hover:cursor-pointer">
+        <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>
+      </a>    
+      <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>      
+      <ul class="flex items-center mr-2 space-x-4">
+        <li class="w-[45px] h-[45px] relative group">
+          <img class="border-2 border-red-500 hover:border-white duration-300 z-20 w-full h-full rounded-full object-cover hover:cursor-pointer" 
+              src="<%= user.foto %>" alt="User Image">
+            
+          <ul class="bg-black text-white absolute right-0  w-[120px] rounded-lg  border-b border-l border-r border-white overflow-hidden  hidden group-hover:block duration-300">
+            <li class="py-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
+              <a href="/api/carrito">Mi Carrito</a>
+            </li>
+            <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
+              <a href="/api/compras/myCompras">Mis Compras</a>
+            </li>
+            <% if (user.isAdmin === 'S') { %>
+              <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">
+                <img class="w-[25px] object-cover" src="./images/aaa.png" 
+                    alt="Settings Icon">
+                <p>Admin</p>
+              </li>
+            <% } %>
+            <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
+              <a href="/logout">Logout</a>
+            </li>            
+          </ul>  
+        </li> 
+        <li>
+          <% if (user.isAdmin === 'S') { %>        
+            <a href="#">
+              <div class="w-[45px] h-[45px]">
+                <img class="border-2 border-red-500 hover:border-white duration-300 z-20 w-full h-full rounded-full object-cover hover:cursor-pointer" 
+                src="https://cdn-icons-png.flaticon.com/512/428/428553.png" alt="User Image">              
+              </div>
+            </a>
+          <% } %>
+        </li>      
+      </ul>  
+      <!-- <div class="flex items-center space-x-2">
+        <a href="/api/carrito" class="relative">
+          <img class='[25px] h-[25px]' src="./images/cart-icon.png" alt="Cart">
+          <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
+            <p id="cart_quantity" class="text-white font-bold"></p>
+          </div>
+        </a>
+        <a class='text-xl font-bold hover:text-gray-600' href="/logout">
+          <div class='w-[45px] h-[45px] duration-300 flex justify-center items-center'>
+            <img class='w-[25px] h-[25px]' src="./images/close-session.png" alt="Close">
+          </div>
+        </a>
+        <% if (user.isAdmin === 'S') { %>        
+          <a href="#">
+            <img class='w-[50px] h-[50px] object-contain' src="./images/profile.png" alt="Profile">
+          </a>
+        <% } %>
+      </div> -->
+    </nav>
+  </div>
+  <!-- Fin NavBar -->
+
+  <div class="max-w-[1300px] mx-auto mt-8 px-4">
+    <div class="w-full text-center">
+      <p class="text-3xl font-bold uppercase pb-2 text-white">Mis Compras</p>      
+      <div class="w-full h-[2px] bg-red-200"></div>
+    </div>
+
+    <div class="w-full h-[700px] py-2 flex">
+      <!-- Lista de Compras -->
+      <div id="compra_list" class="w-[65%] h-[700px] px-4 py-3">
+
+        <% for( let i = 0; i < compras.length; i++ ) { %>
+          <div class="w-full bg-white/90 p-4 my-2 flex items-center justify-between rounded-lg font-bold">
+            <% let fecha = new Date(compras[i].createdAt).toLocaleDateString() %>
+            <% let subtotal = compras[i].cart.subTotal %>
+            <p>Fecha: <span class="text-lg text-red-500"><%= fecha %></span></p>
+            <div class="flex items-center space-x-4">
+              <p>Monto ($): <span class="text-lg text-red-500"><%= subtotal %></span></p>
+              <svg class="hover:bg-gray-300 hover:cursor-pointer rounded-full h-[30px] w-[30px]" viewBox="0 0 512 512"  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M256,128c-81.9,0-145.7,48.8-224,128c67.4,67.7,124,128,224,128c99.9,0,173.4-76.4,224-126.6   C428.2,198.6,354.8,128,256,128z M256,347.3c-49.4,0-89.6-41-89.6-91.3c0-50.4,40.2-91.3,89.6-91.3s89.6,41,89.6,91.3   C345.6,306.4,305.4,347.3,256,347.3z"/><g><path d="M256,224c0-7.9,2.9-15.1,7.6-20.7c-2.5-0.4-5-0.6-7.6-0.6c-28.8,0-52.3,23.9-52.3,53.3c0,29.4,23.5,53.3,52.3,53.3    s52.3-23.9,52.3-53.3c0-2.3-0.2-4.6-0.4-6.9c-5.5,4.3-12.3,6.9-19.8,6.9C270.3,256,256,241.7,256,224z"/></g></g></svg>
+            </div>
+          </div>
+        <% } %>
+
+      </div>
+
+      <!-- Detalle de la Compra -->
+      <div id="compra_detail" class="w-[35%] h-[700px] bg-blue-500"></div>
+
+    </div>
+  </div>
+  
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>      
+  <script>
+    /* Acá pongo el cód JAVASCRIPT ya que no se porque motivo no me funcionan las rutas */
+    
+  </script>
+</body>
+</html>
