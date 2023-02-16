@@ -1,6 +1,5 @@
-
-document.addEventListener("DOMContentLoaded", () => {       
-
+document.addEventListener("DOMContentLoaded", () => {         
+  
   let change_qty = document.getElementsByClassName('change_qty');
   for (let i = 0; i < change_qty.length; i++) {
     const button = change_qty[i];

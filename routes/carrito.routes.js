@@ -44,7 +44,8 @@ router.post('/', async (req, res) => {
   let { producto } = req.body;       
 
   try {        
-    let result = await CartController.createCart(producto, req.user._id);    
+    let result = await CartController.createCart(producto, req.user._id);   
+    console.log(result); 
     return res.status(200).send(result); 
     
   } catch (error) {

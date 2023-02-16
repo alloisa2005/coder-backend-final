@@ -9,7 +9,7 @@ class CartController {
     
     try {      
       let result = await CartModel.findOne({user: user.id, activo: true}) 
-      //console.log(result);          
+      console.log(result);          
       
       if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0, total: 0};            
 
