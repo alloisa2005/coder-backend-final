@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   }
 })
 
-const enviarMail = (destino, asunto, mensaje) => {
+const enviarMail = async (destino, asunto, mensaje) => {
   const mailOptions = {
     from: process.env.MAIL_NODEMAILER,
     to: destino,
@@ -20,9 +20,7 @@ const enviarMail = (destino, asunto, mensaje) => {
     html: mensaje
   }
 
-  transporter.sendMail(mailOptions)
-    .then(info => console.log(info))
-    .catch(err => console.log(err));
+  await transporter.sendMail(mailOptions);    
 }
 
 module.exports = {enviarMail}

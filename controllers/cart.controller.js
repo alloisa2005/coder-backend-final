@@ -5,11 +5,10 @@ const ProductController = require('./product.controller')
 
 class CartController {
 
-  async getMyCart(user) {
-    
+  async getMyCart(user) {        
+
     try {      
-      let result = await CartModel.findOne({user: user.id, activo: true}) 
-      console.log(result);          
+      let result = await CartModel.findOne({userId: user._id, activo: true})              
       
       if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0, total: 0};            
 

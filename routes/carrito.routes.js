@@ -4,8 +4,8 @@ const CartController = require('../controllers/cart.controller');
 const { isLogged } = require('../middlewares/validaciones');
 
 
-router.get('/', isLogged, async (req, res) => {    
-  
+router.get('/', isLogged, async (req, res) => {        
+
   let response = await CartController.getMyCart(req.user);
   let cantidad = response.cantidad;
   let carrito = response.carrito;      
@@ -41,11 +41,11 @@ router.get('/:id/productos', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {  
-  let { producto } = req.body;       
+  let { producto } = req.body;         
 
   try {        
     let result = await CartController.createCart(producto, req.user._id);   
-    console.log(result); 
+    //console.log(result); 
     return res.status(200).send(result); 
     
   } catch (error) {
