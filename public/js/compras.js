@@ -23,14 +23,35 @@ async function cargoListaCompra(cart_id){
   let data = await response.json();
 
   if(data.status === 'OK'){
-    let lista_prods = data.result.productos;
+    let lista_prods = data.result.productos;  // lista de productos en la compra    
+
     let compra_detail = document.getElementById('compra_detail');
     compra_detail.innerHTML = '';
     
     lista = '';
-    lista_prods.forEach( producto => {
-      lista += `<p>JAJA</p>`
+    lista_prods.forEach( producto => {     
+      //console.log(producto);
+
+      let prod_card = `
+      <div class="mb-2 w-full flex items-center space-x-5">
+        <img class="w-[220px] h-[100px] object-cover rounded-lg overflow-x-hidden" src="${producto.foto}" alt="${producto.nombre}">
+        <div class="w-full flex flex-col ">
+          <p class="text-lg font-bold">${producto.nombre}</p>
+          <div class="flex items-center justify-between">
+            <p class="text-lg">Cantidad: ${producto.quantity}</p>
+            <p class="text-lg">SubTotal ($): ${producto.quantity * producto.price}</p>
+          </div>
+        </div>        
+      </div>
+      <div class="my-2 w-full h-[1px] bg-red-500"></div>
+      `;
+
+      lista += prod_card;
     });
+
+    lista += `
+      <p class="text-lg font-bold flex justify-end">Monto Total ($):${data.result.subTotal}</p>
+    `;
     compra_detail.innerHTML = lista;
   }
 }
