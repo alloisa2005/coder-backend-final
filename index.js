@@ -5,6 +5,7 @@ const cors = require('cors');
 const session = require('express-session')
 const flash = require('express-flash');
 const passport = require('passport');
+const compression = require('compression');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session());
+app.use(compression());
 
 ////////////// Rutas //////////////  
 app.use('/api/productos', require('./routes/product.routes'));
