@@ -6,10 +6,10 @@ const ProductController = require('../controllers/product.controller');
 const { logger_info } = require('../logs/files/log_config');
 
 // Middlewares
-const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
+const { validarInputsProduct, isLogged, isAdmin } = require('../middlewares/validaciones')
 
 
- router.get('/', async (req, res) => {
+ router.get('/', isLogged, async (req, res) => {
   try {    
     
     logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
@@ -59,7 +59,7 @@ router.get('/:id', async (req, res) => {
   }  
 });
 
-router.post('/', /*isLogged,*/ validarInputsProduct, async (req, res) => {
+router.post('/', isLogged, isAdmin, validarInputsProduct, async (req, res) => {
 
   try {    
       
@@ -72,7 +72,7 @@ router.post('/', /*isLogged,*/ validarInputsProduct, async (req, res) => {
 
 });
 
-router.put('/:id', /*isLogged,*/ validarInputsProduct, async (req, res) => {
+router.put('/:id', isLogged, isAdmin, validarInputsProduct, async (req, res) => {
   let { id } = req.params;            
   try {
        
@@ -84,7 +84,7 @@ router.put('/:id', /*isLogged,*/ validarInputsProduct, async (req, res) => {
   }
 })
 
-router.delete('/:id', isLogged, async (req, res) => {
+router.delete('/:id', isLogged, isAdmin, async (req, res) => {
   let { id } = req.params;            
 
   try {

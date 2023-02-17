@@ -28,4 +28,11 @@ const isNotLogged = (req, res, next) => {
   res.redirect('/');
 }
 
-module.exports = { validarInputsProduct, isLogged, isNotLogged };
+const isAdmin = (req, res, next) => {
+  if(req.user.isAdmin === 'S'){
+    return next();
+  }
+  res.redirect('/');
+}
+
+module.exports = { validarInputsProduct, isLogged, isNotLogged, isAdmin };
