@@ -19,4 +19,18 @@ function verCompra(e) {
 
 async function cargoListaCompra(cart_id){
   // funcion para cargar los productos de la compra seleccionada
+  let response = await fetch(`/api/carrito/${cart_id}/productos`)
+  let data = await response.json();
+
+  if(data.status === 'OK'){
+    let lista_prods = data.result.productos;
+    let compra_detail = document.getElementById('compra_detail');
+    compra_detail.innerHTML = '';
+    
+    lista = '';
+    lista_prods.forEach( producto => {
+      lista += `<p>JAJA</p>`
+    });
+    compra_detail.innerHTML = lista;
+  }
 }

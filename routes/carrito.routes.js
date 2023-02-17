@@ -30,8 +30,7 @@ router.get('/:id/productos', async (req, res) => {
 
   let { id } = req.params;
 
-  try {
-    
+  try {    
     let result = await CartController.getById(id);    
     return res.status(200).send(result); 
     
