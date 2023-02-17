@@ -54,3 +54,11 @@
 [2023-02-17T10:18:57.038] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-02-17T10:20:00.274] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-02-17T10:20:31.277] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-17T12:08:05.806] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-17T12:18:32.846] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: sdsdsd registrado.
+[2023-02-17T12:18:55.494] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: dssds registrado.
+[2023-02-17T12:23:24.303] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: sdsdsd registrado.
+[2023-02-17T12:25:38.045] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdjhdsjhkdh registrado.
+[2023-02-17T12:25:50.205] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: sdsdsd logueado.
+[2023-02-17T12:25:58.559] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-17T12:26:06.723] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: sdsdsd logueado.

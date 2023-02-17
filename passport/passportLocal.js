@@ -25,6 +25,7 @@ passport.use('local-register', new localStrategy({
     let user = await UserModel.findOne({ email: email});
     if(user) return done(null, false, { message: 'Email ya registrado'});
     
+    console.log('isAdmin: ', req.body.isAdmin);
     let hashedPassword = await bcrypt.hash(password, 12);
 
     // Guardo la imagen del usuario en cloudinary y guardo en la BD el link a la misma
@@ -38,7 +39,7 @@ passport.use('local-register', new localStrategy({
     user.edad = req.body.edad;
     user.telefono = req.body.telefono;
     user.foto = cloud.url;
-
+    user.isAdmin = req.body.isAdmin === undefined ? 'N': 'S';
     await user.save();
 
     //Envío mail al administrador

@@ -19,7 +19,7 @@
           </li>
           <% if (user.isAdmin === 'S') { %>
             <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">
-              <img class="w-[25px] object-cover" src="./images/aaa.png" 
+              <img class="w-[23px] object-cover" src="./assets/aaa.png" 
                   alt="Settings Icon">
               <p>Admin</p>
             </li>
@@ -28,17 +28,7 @@
             <a href="/logout">Logout</a>
           </li>            
         </ul>  
-      </li> 
-      <li>
-        <% if (user.isAdmin === 'S') { %>        
-          <a href="#">
-            <div class="w-[45px] h-[45px]">
-              <img class="border-2 border-red-500 hover:border-white duration-300 z-20 w-full h-full rounded-full object-cover hover:cursor-pointer" 
-              src="https://cdn-icons-png.flaticon.com/512/428/428553.png" alt="User Image">              
-            </div>
-          </a>
-        <% } %>
-      </li>      
+      </li>           
     </ul>  
     <!-- <div class="flex items-center space-x-2">
       <a href="/api/carrito" class="relative">
