@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {         
-  
+document.addEventListener("DOMContentLoaded", () => {           
+
   let change_qty = document.getElementsByClassName('change_qty');
   for (let i = 0; i < change_qty.length; i++) {
     const button = change_qty[i];
@@ -17,10 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   async function changeQuantity(e) {
-    let card_carrito = e.target.parentElement.parentElement.parentElement.parentElement;
-
-    //console.log(card_carrito.getElementsByClassName('id_cart')[0].innerText);
-    //console.log(card_carrito.getElementsByClassName('id_product')[0].innerText);
+    let card_carrito = e.target.parentElement.parentElement.parentElement.parentElement;    
   }
   
   async function deleteProduct(e) {

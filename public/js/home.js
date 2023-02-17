@@ -56,16 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         button: "Aceptar",
       });
     }      
-  }
-
-  /* async function cartCantidad() {
-
-    let response = await fetch('/api/carrito/cant');
-    let data = await response.json();    
-
-    //console.log(data);
-
-    document.getElementById('cart_quantity').innerText = data.cantidad;    
-  }   */
+  }  
 
 });
