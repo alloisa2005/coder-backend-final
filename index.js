@@ -41,5 +41,6 @@ app.use('/api/productos', require('./routes/product.routes'));
 app.use('/api/carrito', require('./routes/carrito.routes'));   
 app.use('/', require('./routes/login.routes'));
 app.use('/api/compras', require('./routes/compra.routes'));
+app.use('/api/admin', require('./routes/admin.routes'));
 
 app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));

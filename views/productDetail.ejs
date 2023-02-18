@@ -14,6 +14,9 @@
               
             <ul class="bg-black text-white absolute right-0  w-[120px] rounded-lg  border-b border-l border-r border-white overflow-hidden  hidden group-hover:block duration-300">
               <li class="py-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
+                <a href="/">Inicio</a>
+              </li>
+              <li class="py-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
                 <a href="/api/carrito">Mi Carrito</a>
               </li>
               <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
@@ -21,9 +24,10 @@
               </li>
               <% if (user.isAdmin === 'S') { %>
                 <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">                
-                  <img class="w-[23px] object-cover" src="/assets/aaa.png" 
-                  alt="Settings Icon">
-                  <p>Admin</p>
+                  <a href="/api/admin" class="w-full flex items-center space-x-3">
+                    <img class="h-[30px] object-cover" src="/assets/aaa.png" alt="Settings Icon">
+                    <p>Admin</p>
+                  </a>
                 </li>
               <% } %>
               <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
