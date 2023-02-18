@@ -40,27 +40,37 @@
   </div>
   <!-- Fin NavBar --> 
 
-  <div class="max-w-[1300px] mx-auto mt-8 px-4 flex space-x-2"> 
-    <div class="w-[20%]">
-      <p>Menú Administrador</p>
-      <div class="flex flex-col pt-3 px-3">
-        <div class="flex items-center hover:cursor-pointer text-white font-bold">
-          <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
-          <p id="item_productos" class="text-lg">Productos</p>          
-        </div>
-        <div class="flex items-center hover:cursor-pointer text-white font-bold">
-          <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
-          <p id="item_compras" class="text-lg">Compras</p>
-        </div>
-        <div class="flex items-center hover:cursor-pointer text-white font-bold">
-          <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
-          <p id="item_varios" class="text-lg">Varios</p>
-        </div>
-      </div>
+  <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
+    <div class="w-full text-center">
+      <p class="text-3xl font-bold uppercase pb-2 text-white">Menú Administrador</p>      
+      <div class="w-full h-[2px] bg-red-200"></div>
     </div>
 
-    <div class="w-[80%] bg-red-500 px-2">
-      <p>Lista de Cosas</p>
+    <div class="pt-4 flex space-x-2">
+      <div class="w-[20%]">
+        <p class="font-bold text-xl">Opciones</p>
+        <div class="flex flex-col pt-3 px-3">
+          <div class="flex items-center hover:cursor-pointer text-white font-bold">
+            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+            <p id="item_usuarios" class="text-lg">Usuarios</p>          
+          </div>
+          <div class="flex items-center hover:cursor-pointer text-white font-bold">
+            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+            <p id="item_productos" class="text-lg">Productos</p>          
+          </div>
+          <div class="flex items-center hover:cursor-pointer text-white font-bold">
+            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+            <p id="item_compras" class="text-lg">Compras</p>
+          </div>
+          <div class="flex items-center hover:cursor-pointer text-white font-bold">
+            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+            <p id="item_varios" class="text-lg">Varios</p>
+          </div>
+        </div>
+      </div>
+  
+      <div id="lista_cosas" class="w-[80%] px-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">        
+      </div>
     </div>
   </div>
 
