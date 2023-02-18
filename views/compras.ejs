@@ -38,11 +38,17 @@
     <div class="w-full text-center">
       <p class="text-3xl font-bold uppercase pb-2 text-white">Mis Compras</p>      
       <div class="w-full h-[2px] bg-red-200"></div>
+      <% if (compras.length === 0) { %>
+       <div class="w-full mt-6 flex flex-col space-y-4">
+          <p class="text-4xl uppercase text-white font-bold">No ha realizado compras</p>
+          <a href="/" class="text-xl mx-auto w-[20%] bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer">Vehículos</a>
+       </div>
+      <% } %>
     </div>
 
-    <div class="w-full h-[700px] py-2 flex">
+    <div class="w-full py-2 flex">      
       <!-- Lista de Compras -->
-      <div id="compra_list" class="w-[55%] h-[700px] px-4 py-3">
+      <div id="compra_list" class="w-[55%]  px-4 py-3">
         <% for( let i = 0; i < compras.length; i++ ) { %>
           <div class="w-full bg-white/90 p-4 my-2 flex items-center justify-between rounded-lg font-bold">
             <% let fecha = new Date(compras[i].createdAt).toLocaleDateString() %>
@@ -56,8 +62,7 @@
               </div>
             </div>
           </div>
-        <% } %>
-
+        <% } %> 
       </div>
 
       <!-- Detalle de la Compra -->
