@@ -32,32 +32,7 @@
       </ul>        
     </nav>
   </div>
-  <!-- Fin NavBar -->
-
-  <!-- <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
-    <a href="/" class="flex hover:cursor-pointer">
-      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>
-    </a>
-    <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>   
-    <div class="flex items-center space-x-2">
-      <a href="#" class="relative">
-        <img class='[25px] h-[25px]' src="../images/cart-icon.png" alt="Cart">
-        <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
-          <p id="cart_quantity_nav" class="text-white font-bold"> <%= cantidad %> </p>
-        </div>
-      </a>
-      <a class='text-xl font-bold hover:text-gray-600' href="/logout">
-        <div class='w-[45px] h-[45px] duration-300 flex justify-center items-center'>
-          <img class='w-[25px] h-[25px]' src="../images/close-session.png" alt="Close">
-        </div>
-      </a>
-      <% if (user.isAdmin === 'S') { %>        
-        <a href="#">
-          <img class='w-[50px] h-[50px] object-contain' src="../images/profile.png" alt="Profile">
-        </a>
-      <% } %>
-    </div>
-  </nav> -->
+  <!-- Fin NavBar -->  
 
   <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
     <div class="flex ">
@@ -100,9 +75,9 @@
       <div class="flex-1 p-3 border-2 border-gray-700 rounded-lg h-[70%]">
         <p class="text-center text-xl font-bold uppercase text-white">Detalle de la compra</p>
         <div class="flex items-center justify-around py-6">
-          <img class="w-[100px]" src="../assets/visa.png" alt="Logo Tarjeta Visa">
-          <img class="w-[100px]" src="../assets/master.png" alt="Logo Tarjeta Master">
-          <img class="w-[100px]" src="../assets/mercadoPago.png" alt="Logo Mercado Pago">          
+          <img class="w-[100px]" src="/assets/visa.png" alt="Logo Tarjeta Visa">
+          <img class="w-[100px]" src="/assets/master.png" alt="Logo Tarjeta Master">
+          <img class="w-[100px]" src="/assets/mercadoPago.png" alt="Logo Mercado Pago">          
         </div>        
         <div>
           <p id="cart_cantidad" class="text-white text-xl font-bold py-2">Cantidad de Productos: <%= cantidad %></p>

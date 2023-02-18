@@ -1,38 +1,4 @@
-<%- include('partials/header') %>
-
-  <!-- Inicio NavBar -->
-  <!-- <div class="w-full bg-inherit relative">
-    <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
-      <a href="/" class="flex hover:cursor-pointer">
-        <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>
-      </a>    
-      <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>      
-      <ul class="flex items-center mr-2 space-x-4">
-        <li class="w-[45px] h-[45px] relative group">
-          <img class="border-2 border-red-500 hover:border-white duration-300 z-20 w-full h-full rounded-full object-cover hover:cursor-pointer" 
-              src="<%= user.foto %>" alt="User Image">
-            
-          <ul class="bg-black text-white absolute right-0  w-[120px] rounded-lg  border-b border-l border-r border-white overflow-hidden  hidden group-hover:block duration-300">
-            <li class="py-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
-              <a href="/api/carrito">Mi Carrito</a>
-            </li>
-            <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
-              <a href="/api/compras/myCompras">Mis Compras</a>
-            </li>
-            <% if (user.isAdmin === 'S') { %>
-              <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">                
-                <p>Menu Admin</p>
-              </li>
-            <% } %>
-            <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
-              <a href="/logout">Logout</a>
-            </li>            
-          </ul>  
-        </li>               
-      </ul>        
-    </nav>
-  </div> -->
-  <!-- Fin NavBar -->  
+<%- include('partials/header') %>  
 
   <div class="relative w-full h-[460px]">
     <div class="w-full bg-inherit absolute top-0 left-0 z-30">
@@ -66,6 +32,7 @@
         </ul>        
       </nav>
     </div>
+
     <p id="prod_id" class="hidden"><%= producto._id %> </p>
     <p id="prod_desc" class="hidden"><%= producto.descripcion %> </p>
     <p id="prod_codigo" class="hidden"><%= producto.codigo %> </p>
@@ -82,19 +49,19 @@
     <p class="text-3xl py-2">Características</p>
     <div class="py-2 w-full grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="text-black bg-white border-2 border-white p-3 flex items-center rounded-lg space-x-5 shadow-lg hover:shadow-xl">
-        <img class="h-[60px]" src="https://cdn-icons-png.flaticon.com/512/1104/1104342.png" alt="Chasis">
+        <img class="h-[60px]" src="/assets/chasis.png" alt="Chasis">
         <p class="text-lg font-bold">Carrocería: <%= producto.caracteristicas.carroceria %> </p>
       </div>
       <div class="text-black bg-white border-2 border-white p-3 flex items-center rounded-lg space-x-5 shadow-lg hover:shadow-xl">
-        <img class="h-[60px]" src="https://cdn-icons-png.flaticon.com/512/4404/4404656.png" alt="Chasis">
+        <img class="h-[60px]" src="/assets/puertas.png" alt="Puertas">
         <p class="text-lg font-bold">Puertas: <%= producto.caracteristicas.puertas %> </p>
       </div>
       <div class="text-black bg-white border-2 border-white p-3 flex items-center rounded-lg space-x-5 shadow-lg hover:shadow-xl">
-        <img class="h-[60px]" src="https://cdn-icons-png.flaticon.com/512/1184/1184097.png" alt="Chasis">
+        <img class="h-[60px]" src="/assets/potencia.png" alt="Potencia">
         <p class="text-lg font-bold">Potencia: <%= producto.caracteristicas.potencia %> </p>
       </div>
       <div class="text-black bg-white border-2 border-white p-3 flex items-center rounded-lg space-x-5 shadow-lg hover:shadow-xl">
-        <img class="h-[60px]" src="https://cdn-icons-png.flaticon.com/512/5102/5102957.png" alt="Chasis">
+        <img class="h-[60px]" src="/assets/plazas.png" alt="Plazas">
         <p class="text-lg font-bold">Plazas: <%= producto.caracteristicas.plazas %> </p>
       </div>
     </div>
