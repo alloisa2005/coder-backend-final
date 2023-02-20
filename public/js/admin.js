@@ -5,6 +5,61 @@ let item_compras   = document.getElementById('item_compras');
 let item_varios    = document.getElementById('item_varios');
 let lista_cosas    = document.getElementById('lista_cosas');
 
+lista_cosas.addEventListener('click', async (e) => {
+  if(e.target.classList.contains('img_edit')){
+    let card_container = e.target.parentElement.parentElement.parentElement;
+    let id_prod = card_container.firstElementChild.innerText.trim();
+    let response = await fetch(`/api/productos/${id_prod}`);
+    let data = await response.json();    
+
+    let producto = data.result;
+    console.log(producto.nombre);
+
+    Swal.fire({
+      title: 'Editar Producto',
+      html: `     
+        <div>
+          <input type="hidden" id="id_prod" class="swal2-input" placeholder="ID Producto" readonly value="${producto._id}">
+        </div>   
+        <div>
+          <label>Nombre:</label><input type="text" id="nombre" class="swal2-input" placeholder="Nombre" readonly value="${producto.nombre}">
+        </div>
+        <div>
+          <label>Descripción:</label><input type="text" id="descripcion" class="swal2-input" placeholder="Descripción" readonly value="${producto.descripcion}">
+        </div>
+        <div>
+          <label>Precio:</label><input type="text" id="precio" class="swal2-input" placeholder="Precio" value="${producto.precio}">
+        </div>
+        <div>
+          <label>Stock:</label><input type="text" id="stock" class="swal2-input" placeholder="Stock" value="${producto.stock}">        
+        </div>
+      `,
+      confirmButtonText: 'Editar',
+      focusConfirm: false,
+      preConfirm: () => {
+        const id_prod = Swal.getPopup().querySelector('#id_prod').value;
+        const nombre = Swal.getPopup().querySelector('#nombre').value;
+        const descripcion = Swal.getPopup().querySelector('#descripcion').value;
+        const precio = parseFloat( Swal.getPopup().querySelector('#precio').value )
+        const stock = parseInt( Swal.getPopup().querySelector('#stock').value )
+        if (precio <= 0 || stock <= 0) {
+          Swal.showValidationMessage(`Verifique precio y/o stock`)
+        }
+        return { id_prod, nombre, precio, descripcion, stock }
+      }
+    }).then((result) => {
+      console.log(result.value.id_prod);
+      Swal.fire("Producto editado con éxito", result.value.nombre, "success", {
+        button: "Aceptar",
+      });
+      /* Swal.fire(`
+        Nombre: ${result.value.nombre}
+        Precio: ${result.value.precio}
+      `.trim()) */
+    })
+  }
+});
+
 item_usuarios.addEventListener('click', (e) =>{  
   agregarTick(e);
   quitarTick(item_productos);
@@ -61,7 +116,7 @@ async function cargarListaProductos() {
   let response = await fetch('/api/productos');
   let data = await response.json();
   let productos = data.result; 
-  console.log(productos);
+  //console.log(productos);
 
   lista_cosas.innerHTML = '';
   let lista = '';
@@ -74,11 +129,12 @@ async function cargarListaProductos() {
 function cardProducto(producto){
   return `
       <div class="w-full">
+        <p class="hidden prod_id">${producto._id}</p>
         <img class="w-full h-[120px] object-cover rounded-lg overflow-x-hidden" src="${producto.foto}" alt="${producto.nombre}">
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">${producto.nombre}</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
-            <img class="w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
+            <img class="img_edit w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
           </a>
         </div>        
       </div>      

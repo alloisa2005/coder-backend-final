@@ -225,3 +225,89 @@
 [2023-02-18T12:02:24.609] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
 [2023-02-18T12:02:29.355] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
 [2023-02-18T12:02:32.594] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T19:55:36.576] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T19:55:41.098] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T19:56:39.283] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T19:56:43.738] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T19:58:33.086] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T19:58:36.799] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:00:45.720] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:00:50.674] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:02:00.994] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:02:04.938] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:02:58.032] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:03:02.004] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:03:55.329] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:03:59.096] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:05:43.674] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:05:49.096] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:07:38.583] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:07:41.976] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:08:44.877] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:08:48.721] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:09:28.945] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:09:33.054] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:10:04.862] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:10:08.358] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:10:50.733] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:10:55.458] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:22:50.077] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:22:56.341] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:24:52.717] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:24:56.148] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:25:21.285] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:26:17.953] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:26:21.053] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:27:37.732] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:27:40.953] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:27:59.572] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:28:02.687] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:29:57.895] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:31:25.238] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:31:29.853] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:32:29.412] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:34:45.498] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:34:49.671] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:35:45.587] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:35:49.439] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:37:07.874] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:37:11.204] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:38:19.284] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:38:22.622] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:38:55.358] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:38:58.933] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:41:31.372] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:41:36.179] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:45:08.702] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:45:11.786] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:46:29.848] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:46:32.997] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:47:21.944] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:47:25.498] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:47:57.518] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:48:01.288] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:49:40.567] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:49:44.022] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:50:10.614] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:50:13.794] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:52:56.876] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:52:59.865] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:53:56.071] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:53:59.397] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:58:35.060] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:58:39.041] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:59:15.666] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T20:59:19.313] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T20:59:57.413] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:00:20.123] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:00:23.444] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:01:19.953] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:01:52.834] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:02:25.285] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:02:28.278] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:03:26.724] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:03:31.777] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:14:48.704] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:14:52.880] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-19T21:15:23.447] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-19T21:15:27.058] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
