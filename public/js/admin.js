@@ -12,10 +12,13 @@ lista_cosas.addEventListener('click', async (e) => {
     let response = await fetch(`/api/productos/${id_prod}`);
     let data = await response.json();    
 
-    let producto = data.result;
-    //console.log(producto.nombre);
-    swalEdit(producto);
-    
+    let producto = data.result;    
+    swalEdit(producto);    
+  }  
+
+  if(e.target.classList.contains('img_add')){
+    console.log(e.target);
+    swalNew();
   }
 });
 
@@ -78,11 +81,27 @@ async function cargarListaProductos() {
   //console.log(productos);
 
   lista_cosas.innerHTML = '';
+  lista_cosas.innerHTML = cardProductoInicial();
   let lista = '';
   productos.forEach(prod => {
     lista += cardProducto(prod);
   });
-  lista_cosas.innerHTML = lista;
+  lista_cosas.innerHTML += lista;
+}
+
+function cardProductoInicial(){
+  return `
+      <div class="w-full">
+        <p class="hidden prod_id"></p>
+        <img class="w-full h-[120px] object-contain rounded-lg overflow-x-hidden" src="/assets/no-product.png" alt="Add Product">
+        <div class="w-full flex items-center justify-between mt-2 px-1">
+          <p class="text-lg font-bold text-white">Agregar Producto</p>          
+          <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
+            <img class="img_add w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
+          </a>
+        </div>        
+      </div>      
+  `;
 }
 
 function cardProducto(producto){
@@ -98,6 +117,101 @@ function cardProducto(producto){
         </div>        
       </div>      
   `;
+}
+
+async function swalNew() {
+  Swal.fire({
+    title: 'Nuevo Producto',
+    html: `           
+      <div>
+        <label>Nombre:</label><input type="text" id="nombre" class="swal2-input" placeholder="Nombre">
+      </div>
+      <div>
+        <label>Descripción:</label><input type="text" id="descripcion" class="swal2-input" placeholder="Descripción">
+      </div>
+      <div>
+        <label>Código:</label><input type="text" id="codigo" class="swal2-input" placeholder="Código">
+      </div>
+      <div>
+        <label>URL Img:</label><input type="text" id="foto" class="swal2-input" placeholder="URL Foto">
+      </div>
+      <div>
+        <label>Precio:</label><input type="text" id="precio" class="swal2-input" placeholder="Precio">
+      </div>
+      <div>
+        <label>Stock:</label><input type="text" id="stock" class="swal2-input" placeholder="Stock">        
+      </div>
+      <div>
+        <label>Carrocería:</label><input type="text" id="carroceria" class="swal2-input" placeholder="Carrocería">        
+      </div>
+      <div>
+        <label>Puertas:</label><input type="text" id="puertas" class="swal2-input" placeholder="Nro. Puertas">
+      </div>
+      <div>
+        <label>Potencia:</label><input type="text" id="potencia" class="swal2-input" placeholder="Potencia">
+      </div>
+      <div>
+        <label>Plazas:</label><input type="text" id="plazas" class="swal2-input" placeholder="Nro. Plazas">
+      </div>
+    `,
+    confirmButtonText: 'Guardar',
+    showCancelButton: true,
+    focusConfirm: false,
+    preConfirm: () => {      
+      const nombre = Swal.getPopup().querySelector('#nombre').value;
+      const descripcion = Swal.getPopup().querySelector('#descripcion').value;
+      const codigo = Swal.getPopup().querySelector('#codigo').value;
+      const foto = Swal.getPopup().querySelector('#foto').value;
+      const precio = parseFloat( Swal.getPopup().querySelector('#precio').value )
+      const stock = parseInt( Swal.getPopup().querySelector('#stock').value )
+
+      const carroceria = Swal.getPopup().querySelector('#carroceria').value;
+      const puertas = Swal.getPopup().querySelector('#puertas').value;
+      const potencia = Swal.getPopup().querySelector('#potencia').value;
+      const plazas = Swal.getPopup().querySelector('#plazas').value;
+
+      if (!nombre || !descripcion || !codigo || !foto || !precio || precio <= 0 || !stock || stock <= 0 || !carroceria || !puertas || !plazas || !potencia) {
+        Swal.showValidationMessage(`Complete los campos`)
+      }
+      return { nombre, descripcion, codigo, foto, precio, stock, carroceria, puertas, potencia, plazas}
+    }
+  }).then((result) => {
+    if(result.isConfirmed){    
+      addProduct(result.value.nombre, result.value.descripcion, result.value.codigo, result.value.foto, result.value.precio, result.value.stock, result.value.carroceria, result.value.puertas, result.value.potencia, result.value.plazas);         
+    } 
+  })
+}
+
+async function addProduct(nombre, descripcion, codigo, foto, precio, stock, carroceria, puertas, potencia, plazas){  
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      nombre,
+      descripcion,
+      codigo, 
+      foto,
+      precio,
+      stock,
+      caracteristicas: { 
+        carroceria,
+        puertas,
+        potencia,
+        plazas
+      }
+     })
+  };
+
+  const response = await fetch(`/api/productos/`, requestOptions);
+  const data = await response.json();  
+
+  if(data.status === 'OK') {
+    Swal.fire("Producto agregado con éxito", nombre, "success", {
+      button: "Aceptar",
+    }); 
+
+    cargarListaProductos();
+  }
 }
 
 async function swalEdit(producto) {

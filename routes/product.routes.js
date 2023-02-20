@@ -72,7 +72,7 @@ router.post('/', isLogged, isAdmin, validarInputsProduct, async (req, res) => {
 
 });
 
-router.put('/:id', isLogged, isAdmin, validarInputsProduct, async (req, res) => {
+router.put('/:id', isLogged, isAdmin, async (req, res) => {
   let { id } = req.params;            
   try {
        

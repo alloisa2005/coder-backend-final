@@ -50,7 +50,7 @@ async function cargoListaCompra(cart_id){
     });
 
     lista += `
-      <p class="text-lg font-bold flex justify-end">Monto Total ($):${data.result.subTotal}</p>
+      <p class="text-lg font-bold flex justify-end">Monto Total ($): ${data.result.subTotal}</p>
     `;
     compra_detail.innerHTML = lista;
   }

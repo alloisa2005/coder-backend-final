@@ -7,7 +7,9 @@ class ProductController {
 
     try {      
 
-      let result = await ProductModel.find()
+      // Listo los productos ordenados por fecha de creación, 
+      // los recién agregados aparecen al principio
+      let result = await ProductModel.find().sort({createdAt: -1})
       return {status:'OK', result};
       
 
