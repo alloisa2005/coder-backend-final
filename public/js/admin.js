@@ -13,50 +13,9 @@ lista_cosas.addEventListener('click', async (e) => {
     let data = await response.json();    
 
     let producto = data.result;
-    console.log(producto.nombre);
-
-    Swal.fire({
-      title: 'Editar Producto',
-      html: `     
-        <div>
-          <input type="hidden" id="id_prod" class="swal2-input" placeholder="ID Producto" readonly value="${producto._id}">
-        </div>   
-        <div>
-          <label>Nombre:</label><input type="text" id="nombre" class="swal2-input" placeholder="Nombre" readonly value="${producto.nombre}">
-        </div>
-        <div>
-          <label>Descripción:</label><input type="text" id="descripcion" class="swal2-input" placeholder="Descripción" readonly value="${producto.descripcion}">
-        </div>
-        <div>
-          <label>Precio:</label><input type="text" id="precio" class="swal2-input" placeholder="Precio" value="${producto.precio}">
-        </div>
-        <div>
-          <label>Stock:</label><input type="text" id="stock" class="swal2-input" placeholder="Stock" value="${producto.stock}">        
-        </div>
-      `,
-      confirmButtonText: 'Editar',
-      focusConfirm: false,
-      preConfirm: () => {
-        const id_prod = Swal.getPopup().querySelector('#id_prod').value;
-        const nombre = Swal.getPopup().querySelector('#nombre').value;
-        const descripcion = Swal.getPopup().querySelector('#descripcion').value;
-        const precio = parseFloat( Swal.getPopup().querySelector('#precio').value )
-        const stock = parseInt( Swal.getPopup().querySelector('#stock').value )
-        if (precio <= 0 || stock <= 0) {
-          Swal.showValidationMessage(`Verifique precio y/o stock`)
-        }
-        return { id_prod, nombre, precio, descripcion, stock }
-      }
-    }).then((result) => {
-      console.log(result.value.id_prod);
-      Swal.fire("Producto editado con éxito", result.value.nombre, "success", {
-        button: "Aceptar",
-      });
-      /* Swal.fire(`
-        Nombre: ${result.value.nombre}
-        Precio: ${result.value.precio}
-      `.trim()) */
-    })
+    //console.log(producto.nombre);
+    swalEdit(producto);
+    
   }
 });
 
@@ -139,4 +98,62 @@ function cardProducto(producto){
         </div>        
       </div>      
   `;
+}
+
+async function swalEdit(producto) {
+  Swal.fire({
+    title: 'Editar Producto',
+    html: `     
+      <div>
+        <input type="hidden" id="id_prod" class="swal2-input" placeholder="ID Producto" readonly value="${producto._id}">
+      </div>   
+      <div>
+        <label>Nombre:</label><input type="text" id="nombre" class="swal2-input" placeholder="Nombre" readonly value="${producto.nombre}">
+      </div>
+      <div>
+        <label>Descripción:</label><input type="text" id="descripcion" class="swal2-input" placeholder="Descripción" readonly value="${producto.descripcion}">
+      </div>
+      <div>
+        <label>Precio:</label><input type="text" id="precio" class="swal2-input" placeholder="Precio" value="${producto.precio}">
+      </div>
+      <div>
+        <label>Stock:</label><input type="text" id="stock" class="swal2-input" placeholder="Stock" value="${producto.stock}">        
+      </div>
+    `,
+    confirmButtonText: 'Editar',
+    showCancelButton: true,
+    focusConfirm: false,
+    preConfirm: () => {
+      const id_prod = Swal.getPopup().querySelector('#id_prod').value;
+      const nombre = Swal.getPopup().querySelector('#nombre').value;
+      const descripcion = Swal.getPopup().querySelector('#descripcion').value;
+      const precio = parseFloat( Swal.getPopup().querySelector('#precio').value )
+      const stock = parseInt( Swal.getPopup().querySelector('#stock').value )
+      if (!precio || precio <= 0 || !stock || stock <= 0) {
+        Swal.showValidationMessage(`Verifique precio y/o stock`)
+      }
+      return { id_prod, nombre, precio, descripcion, stock }
+    }
+  }).then((result) => {
+    if(result.isConfirmed){      
+      editProduct(result.value.id_prod, result.value.precio, result.value.stock);         
+    } 
+  })
+}
+
+async function editProduct(id, precio, stock){
+  const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ precio, stock })
+  };
+
+  const response = await fetch(`/api/productos/${id}`, requestOptions);
+  const data = await response.json();
+
+  if(data.status === 'OK') {
+    Swal.fire("Producto modificado con éxito", nombre, "success", {
+      button: "Aceptar",
+    }); 
+  }
 }
