@@ -28,7 +28,7 @@ item_usuarios.addEventListener('click', (e) =>{
   quitarTick(item_compras);
   quitarTick(item_varios);    
 
-  lista_cosas.innerHTML = '';
+  cargarListaUsuarios();
 })
 
 item_productos.addEventListener('click', (e) =>{  
@@ -74,6 +74,55 @@ function quitarTick(e) {
   padre.classList.remove('space-x-2')
 }
 
+///////////////// U S U A R I O S /////////////////
+async function cargarListaUsuarios() {
+  let response = await fetch('/api/users');
+  let data = await response.json();
+  let usuarios = data.usuarios; 
+  console.log(usuarios);
+
+  lista_cosas.innerHTML = '';
+  lista_cosas.innerHTML = cardUserInicial();
+  let lista = '';
+  usuarios.forEach(user => {
+    lista += cardUser(user);
+  });
+  lista_cosas.innerHTML += lista; 
+}
+
+function cardUserInicial(){
+  return `
+      <div class="w-full border-2 rounded-md">
+        <p class="hidden prod_id"></p>
+        <img class="w-full h-[120px] object-contain rounded-lg overflow-x-hidden" src="/assets/add-user.png" alt="Add Product">
+        <div class="w-full flex items-center justify-between mt-2 px-1">
+          <p class="text-lg font-bold text-white">Agregar Usuario</p>          
+          <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
+            <img class="img_add w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
+          </a>
+        </div>        
+      </div>      
+  `;
+}
+
+function cardUser(user){
+  return `
+      <div class="w-full ">
+        <p class="hidden prod_id">${user._id}</p>
+        <img class="w-full h-[120px] object-cover rounded-lg overflow-x-hidden" src="${user.foto}" alt="${user.nombre}">
+        <div class="w-full flex items-center justify-between mt-2 px-1">
+          <p class="text-lg font-bold text-white">${user.nombre}</p>          
+          <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
+            <img class="img_edit w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
+          </a>
+        </div>        
+      </div>      
+  `;
+}
+
+///////////////////////////////////////////////////
+
+/////////////// P R O D U C T O S /////////////////
 async function cargarListaProductos() {
   let response = await fetch('/api/productos');
   let data = await response.json();
@@ -271,3 +320,5 @@ async function editProduct(id, precio, stock){
     }); 
   }
 }
+
+

@@ -405,3 +405,28 @@
 [2023-02-20T12:56:21.520] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-02-20T12:57:48.820] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-02-20T12:58:45.385] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-20T18:48:41.440] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T18:48:46.598] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-20T18:49:16.195] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-20T18:57:59.259] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T18:58:47.387] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:01:06.509] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:01:35.640] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:03:29.775] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:04:03.629] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:04:28.316] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:04:49.471] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-20T19:06:26.192] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:06:47.460] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:07:15.233] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-20T19:07:29.287] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:07:44.229] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-20T19:09:22.292] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:09:43.456] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:10:17.924] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:10:56.290] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:12:12.086] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:12:49.483] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:13:15.702] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: sdkhsjkdh logueado.
+[2023-02-20T19:13:53.094] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh
+[2023-02-20T19:14:00.412] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: sdkhsjkdh

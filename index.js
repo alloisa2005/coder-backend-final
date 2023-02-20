@@ -37,6 +37,7 @@ app.use(passport.session());
 app.use(compression());
 
 ////////////// Rutas //////////////  
+app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/productos', require('./routes/product.routes'));
 app.use('/api/carrito', require('./routes/carrito.routes'));   
 app.use('/', require('./routes/login.routes'));
