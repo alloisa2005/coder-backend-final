@@ -1,30 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {           
-
-  let change_qty = document.getElementsByClassName('change_qty');
-  for (let i = 0; i < change_qty.length; i++) {
-    const button = change_qty[i];
-    button.addEventListener('change', changeQuantity)
-  }   
+document.addEventListener("DOMContentLoaded", () => {             
   
-  let btn_eliminar = document.getElementsByClassName('btn_eliminar');
-  for (let i = 0; i < btn_eliminar.length; i++) {
-    const button = btn_eliminar[i];
-    button.addEventListener('click', deleteProduct)
-  }
+  let lista_carrito = document.getElementById("lista_carrito");
+  lista_carrito.addEventListener('click', (e) => {
+
+    // Si apreto el botón ELIMINAR
+    if(e.target.classList.contains("btn_eliminar")){
+      deleteProduct(e)
+    }
+  })  
   
   let fin_compra = document.getElementById('fin_compra');
-  fin_compra.addEventListener('click', confirmoCompra)
+  fin_compra.addEventListener('click', confirmoCompra)  
   
-
-  async function changeQuantity(e) {
-    let card_carrito = e.target.parentElement.parentElement.parentElement.parentElement;    
-  }
   
   async function deleteProduct(e) {
     let card_carrito = e.target.parentElement.parentElement.parentElement;
-
+    
     let id_cart = card_carrito.getElementsByClassName('id_cart')[0].innerText.trim();
-    let id_prod = card_carrito.getElementsByClassName('id_product')[0].innerText.trim();
+    let id_prod = card_carrito.getElementsByClassName('id_product')[0].innerText.trim();        
 
     let result = await fetch(`/api/carrito/${id_cart}/productos/${id_prod}`, { 
       method: 'DELETE', 
@@ -32,7 +25,40 @@ document.addEventListener("DOMContentLoaded", () => {
       'Content-Type': 'application/json; charset=UTF-8'
       } 
     });    
-    let data = await result.json();    
+    let data = await result.json();     
+    if(data.status === 'OK'){
+      loadCarrito();
+    }
+  }
+
+  async function loadCarrito(){
+    let response = await fetch('/api/carrito/micarrito');
+    let data = await response.json();
+    
+    if(data.status === 'OK'){
+      let products_container = document.getElementsByClassName('products_container')[0];
+      let cart_quantity_subtitle = document.getElementById('cart_quantity_subtitle');
+      let cart_cantidad = document.getElementById('cart_cantidad');
+      let cart_total= document.getElementById('cart_total');
+
+      cart_quantity_subtitle.innerText = `El carrito contiene ${data.cantidad} productos`;
+      if(data.cantidad === 1){
+        cart_quantity_subtitle.innerText = `El carrito contiene ${data.cantidad} producto`
+      }
+
+      cart_cantidad.innerText = `Cantidad de Productos: ${data.cantidad}`;
+      cart_total.innerText = `Total de la Compra ($): ${data.total}`;
+
+      let carrito = data.carrito;
+
+      products_container.innerHTML = '';
+      let lista = ''
+      for (let i = 0; i < carrito.productos.length; i++) {
+        let prod = carrito.productos[i];
+        lista += cardCarrito(carrito._id, prod);
+      }
+      products_container.innerHTML = lista;
+    }
   }
 
   async function confirmoCompra(e) {
@@ -67,6 +93,29 @@ document.addEventListener("DOMContentLoaded", () => {
         button: "Aceptar",
       });
     }
+  }
+
+  function cardCarrito(carritoId, producto) {
+    return `
+    <div class="py-2">
+      <div class="w-full border-2 border-black/60 p-4 flex items-center space-x-8 rounded-lg">
+        <p class="id_cart hidden">${carritoId}</p>
+        <p class="id_product hidden">${producto.product_id}</p>
+        <p class="prod_codigo hidden">${producto.codigo}</p>
+        <p class="prod_stock hidden">${producto.stock}</p>
+        <img class="w-[120px] hover:cursor-pointer hover:scale-110 duration-300" src="${producto.foto}" alt="${producto.nombre}">
+        <div class="w-full px-4">
+          <p class="prod_nombre text-xl font-extrabold">${producto.nombre}</p>
+          <p class="prod_descripcion text-xl py-1 text-white">${producto.descripcion}</p>
+          <div class="w-full flex items-center justify-between">
+            <p class="prod_precio text-lg text-white">Precio ($): ${producto.price}</p>
+            <a class="btn_eliminar text-lg text-white hover:text-black hover:scale-110 duration-300" href="#">Eliminar</a>
+            <p class="text-lg text-white" for="cantidad">Cantidad: <span class="text-xl font-bold">${producto.quantity}</span></p>                                              
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
   }
 });
 

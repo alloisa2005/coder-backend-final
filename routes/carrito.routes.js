@@ -94,5 +94,14 @@ router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
   }  
 }); 
 
+router.get('/micarrito', isLogged, async (req, res) => {        
+
+  try {
+    let response = await CartController.getMyCart(req.user);  
+    return res.status(200).send(response);
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }
+})
 
 module.exports = router;

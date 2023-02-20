@@ -51,7 +51,7 @@
         <% } else { %>
           <p id="cart_quantity_subtitle" class="text-white text-2xl font-bold">El carrito contiene <%= cantidad %> productos</p>        
         <% } %>
-        <div class="products_container h-[600px] overflow-y-scroll pr-1.5">
+        <div id="lista_carrito" class="products_container h-[600px] overflow-y-scroll pr-1.5">
             <% for( let i = 0; i < carrito.productos.length; i++ ) { %> 
               <!-- Card de carrito -->
               <div class="py-2">
