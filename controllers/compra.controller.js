@@ -1,19 +1,18 @@
 
 const CompraModel = require('../models/Compra.model');
 const CartModel = require('../models/Cart.model');
+const { enviarMail } = require('../utils/enviarMail');
 
 class CompraController {
 
-  async getAll() {
+  async getAll(req, res) {
 
     try {
-
       let result = await CompraModel.find().populate('user').populate('cart')
-      return {status:'OK', result};             
+      return res.status(200).send(result);  
 
     } catch (error) {
-
-      return {status:'ERROR', result: error.message};             
+      return res.status(400).send( {status:'ERROR', result: error.message} );  
     }
   }  
 
@@ -30,20 +29,29 @@ class CompraController {
     }
   } 
 
-  async newCompra(userId, cartId) {
-    try {
-      let compra = new CompraModel({user: userId, cart: cartId});
+  async newCompra (req, res) {
+
+    let { cartId } = req.body;    
+
+    try {                      
+      let compra = new CompraModel({user: req.user._id, cart: cartId});
       await compra.save();
       await CartModel.findByIdAndUpdate(cartId, {activo: false});
 
-      let newCompra = await CompraModel.findById(compra._id).populate('user');      
+      let newCompra = await CompraModel.findById(compra._id).populate('user'); 
 
-      return {status:'OK', result: newCompra}; 
-
+      //Finalizo el carrito cambiando activo a FALSE      
+      if(newCompra){      
+        await CartModel.findByIdAndUpdate(cartId, {activo: false});
+        let mensaje = `<div><h2>Bienvenido/a</h2><p>Gracias por registrarte en Ecommerce Back, puedes visitar la tienda cuando gustes.</p><a href="#">www.tienda-back.com</a></div>`;
+        enviarMail(req.user.email, 'Detalle de Compra', mensaje)      
+      }            
+      return res.status(200).send({status: 'OK', result: newCompra});          
+        
     } catch (error) {
-      return {status:'ERROR', result: error.message}; 
-    }
-  }
+      res.status(404).send({status:'ERROR', result: error.message}); 
+    } 
+  } 
 
 }
 

@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           'Content-Type': 'application/json'
         }, 
-        body: JSON.stringify({cartId}) 
+        body: JSON.stringify({cartId})  
       });
-      let data = await response.json();
+      let data = await response.json();      
 
       if(data.status === 'OK'){
         document.getElementsByClassName('products_container')[0].innerHTML = '';

@@ -480,3 +480,19 @@
 [2023-02-21T15:10:04.732] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
 [2023-02-21T15:10:07.666] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
 [2023-02-21T15:10:24.472] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-21T15:11:13.691] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-21T15:11:42.718] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-21T15:11:49.980] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-21T15:22:54.232] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-21T15:23:49.633] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-21T15:26:09.967] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-21T15:27:07.011] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-21T15:28:41.988] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-02-21T15:29:57.312] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-21T15:30:33.249] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-02-21T15:31:37.273] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-02-21T15:32:49.384] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-21T15:36:19.575] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-02-21T15:36:46.910] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-21T15:37:12.036] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-21T15:37:16.964] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
