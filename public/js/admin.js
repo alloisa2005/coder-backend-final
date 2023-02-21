@@ -84,6 +84,10 @@ item_varios.addEventListener('click', (e) =>{
   lista_cosas.innerHTML = '';
 })
 
+buscar_user.addEventListener('keyup', buscarUsuario);
+
+buscar_prod.addEventListener('keyup', buscarProd);
+
 function agregarTick(e) {
   let padre = e.target.parentElement;
   let imagen = padre.firstElementChild;  
@@ -204,7 +208,26 @@ async function editUser(id_user, nombre, email, direccion, telefono, edad){
     Swal.fire("Usuario modificado con éxito", nombre, "success", {
       button: "Aceptar",
     }); 
+    //cargarListaUsuarios();
+  }
+}
+
+async function buscarUsuario(e) {
+  let cadena = e.target.value.trim();
+
+  if(cadena.length === 0) {
     cargarListaUsuarios();
+  } else {
+    let response = await fetch(`/api/users/buscar/${cadena}`)
+    let data = await response.json();
+    let usuarios = data.usuarios;
+
+    lista_cosas.innerHTML = '';    
+    let lista = '';
+    usuarios.forEach(user => {
+      lista += cardUser(user);
+    });
+    lista_cosas.innerHTML += lista;
   }
 }
 ///////////////////////////////////////////////////
@@ -401,11 +424,30 @@ async function editProduct(id, precio, stock){
   const response = await fetch(`/api/productos/${id}`, requestOptions);
   const data = await response.json();
 
-  if(data.status === 'OK') {
+  if(data.status === 'OK') {    
+    
     Swal.fire("Producto modificado con éxito", nombre, "success", {
       button: "Aceptar",
     }); 
   }
 }
 
+async function buscarProd(e) {
+  let cadena = e.target.value.trim();
+
+  if(cadena.length === 0) {
+    cargarListaProductos();
+  } else {
+    let response = await fetch(`/api/productos/name/${cadena}`)
+    let data = await response.json();
+    let productos = data.result;    
+    
+    lista_cosas.innerHTML = '';    
+    let lista = '';
+    productos.forEach(prod => {
+      lista += cardProducto(prod);
+    });
+    lista_cosas.innerHTML += lista; 
+  }
+}
 
