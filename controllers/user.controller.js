@@ -24,6 +24,17 @@ class UserController {
     }
   }  
 
+  async getByName(req, res) { 
+    let { nombre } = req.params;    
+
+    try {
+      let usuarios = await UserModel.find({nombre: { $regex: nombre, $options: 'i'} });
+      return res.send({status: 'OK', usuarios});
+    } catch (error) {
+      return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
+    }
+  }  
+
   async updateUser(req, res) { 
     let { id } = req.params;
 

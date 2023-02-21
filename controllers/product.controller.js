@@ -23,7 +23,7 @@ class ProductController {
 
     try {      
       let result;
-      if(cadena.length > 0){
+      if(cadena.length > 0){        
         result = await ProductModel.find({ nombre: new RegExp(cadena, 'i') });
       }else{
         result = await ProductModel.find();

@@ -8,6 +8,9 @@ router.get('/', isLogged, isAdmin, userController.getAll);
 
 router.get('/:id', isLogged, isAdmin, userController.getById);
 
+// Ruta para buscar por nombre (como un like en SQL)
+router.get('/buscar/:nombre', userController.getByName);
+
 router.post('/', isLogged, isAdmin, userController.createUser);
 
 router.put('/:id', isLogged, isAdmin, userController.updateUser);
