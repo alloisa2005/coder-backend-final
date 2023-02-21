@@ -37,6 +37,17 @@ class UserController {
       return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
     }
   }  
+
+  async createUser(req, res) {     
+
+    try {
+      let usuario = await UserModel.create(req.body);
+
+      return res.send({status: 'OK', usuario});
+    } catch (error) {
+      return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
+    }
+  } 
 }
 
 module.exports = new UserController();
