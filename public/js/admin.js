@@ -6,7 +6,8 @@ let item_varios    = document.getElementById('item_varios');
 let lista_cosas    = document.getElementById('lista_cosas');
 
 lista_cosas.addEventListener('click', async (e) => {
-  if(e.target.classList.contains('img_edit')){
+  // Editar Producto
+  if(e.target.classList.contains('img_edit_prod')){
     let card_container = e.target.parentElement.parentElement.parentElement;
     let id_prod = card_container.firstElementChild.innerText.trim();
     let response = await fetch(`/api/productos/${id_prod}`);
@@ -16,10 +17,22 @@ lista_cosas.addEventListener('click', async (e) => {
     swalEdit(producto);    
   }  
 
-  if(e.target.classList.contains('img_add')){
+  // Nuevo Producto
+  if(e.target.classList.contains('img_add_prod')){
     console.log(e.target);
     swalNew();
   }
+
+  // Editar Usuario
+  if(e.target.classList.contains('img_edit_user')){
+    let card_container = e.target.parentElement.parentElement.parentElement;
+    let id_user = card_container.firstElementChild.innerText.trim();
+    let response = await fetch(`/api/users/${id_user}`);
+    let data = await response.json();        
+
+    let user = data.usuario;    
+    swalEditUser(user);    
+  }  
 });
 
 item_usuarios.addEventListener('click', (e) =>{  
@@ -79,7 +92,6 @@ async function cargarListaUsuarios() {
   let response = await fetch('/api/users');
   let data = await response.json();
   let usuarios = data.usuarios; 
-  console.log(usuarios);
 
   lista_cosas.innerHTML = '';
   lista_cosas.innerHTML = cardUserInicial();
@@ -98,7 +110,7 @@ function cardUserInicial(){
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">Agregar Usuario</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
-            <img class="img_add w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
+            <img class="img_add_user w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
           </a>
         </div>        
       </div>      
@@ -113,13 +125,75 @@ function cardUser(user){
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">${user.nombre}</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
-            <img class="img_edit w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
+            <img class="img_edit_user w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
           </a>
         </div>        
       </div>      
   `;
 }
 
+async function swalEditUser(usuario) {
+  Swal.fire({
+    title: 'Editar Usuario',
+    html: `     
+      <div>
+        <input type="hidden" id="id_user" class="swal2-input" placeholder="ID User" readonly value="${usuario._id}">
+      </div>   
+      <div>
+        <label>Nombre:</label><input type="text" id="nombre" class="swal2-input" placeholder="Nombre" value="${usuario.nombre}">
+      </div>
+      <div>
+        <label>Email:</label><input type="email" id="email" class="swal2-input" placeholder="Email" value="${usuario.email}">
+      </div>
+      <div>
+        <label>Dirección:</label><input type="text" id="direccion" class="swal2-input" placeholder="Dirección" value="${usuario.direccion}">
+      </div>
+      <div>
+        <label>Teléfono:</label><input type="text" id="telefono" class="swal2-input" placeholder="Teléfono" value="${usuario.telefono}">        
+      </div>
+      <div>
+        <label>Edad:</label><input type="number" id="edad" class="swal2-input" placeholder="Edad" value="${usuario.edad}">        
+      </div>
+    `,
+    confirmButtonText: 'Editar',
+    showCancelButton: true,
+    focusConfirm: false,
+    preConfirm: () => {
+      const id_user = Swal.getPopup().querySelector('#id_user').value;
+      const nombre = Swal.getPopup().querySelector('#nombre').value;
+      const email = Swal.getPopup().querySelector('#email').value;
+      const direccion = Swal.getPopup().querySelector('#direccion').value 
+      const telefono = Swal.getPopup().querySelector('#telefono').value 
+      const edad = parseInt( Swal.getPopup().querySelector('#edad').value )
+      if (!nombre || edad <= 0 || !email || !direccion || !telefono ) {
+        Swal.showValidationMessage(`Complete los datos`)
+      }
+      return { id_user, nombre, email, direccion, telefono, edad }
+    }
+  }).then((result) => {
+    if(result.isConfirmed){            
+      editUser(result.value.id_user, result.value.nombre, result.value.email, result.value.direccion, result.value.telefono, result.value.edad);
+    } 
+  })
+}  
+
+async function editUser(id_user, nombre, email, direccion, telefono, edad){
+  const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nombre, email, direccion, telefono, edad })
+  };
+
+  const response = await fetch(`/api/users/${id_user}`, requestOptions);
+  const data = await response.json();
+
+  if(data.status === 'OK') {
+    Swal.fire("Usuario modificado con éxito", nombre, "success", {
+      button: "Aceptar",
+    }); 
+    cargarListaUsuarios();
+  }
+}
 ///////////////////////////////////////////////////
 
 /////////////// P R O D U C T O S /////////////////
@@ -146,7 +220,7 @@ function cardProductoInicial(){
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">Agregar Producto</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
-            <img class="img_add w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
+            <img class="img_add_prod w-[20px] h-[20px] object-cover" src="/assets/add-icon.png" alt="Edit"> 
           </a>
         </div>        
       </div>      
@@ -161,7 +235,7 @@ function cardProducto(producto){
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">${producto.nombre}</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
-            <img class="img_edit w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
+            <img class="img_edit_prod w-[20px] h-[20px] object-cover" src="/assets/edit.png" alt="Edit"> 
           </a>
         </div>        
       </div>      

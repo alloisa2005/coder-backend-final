@@ -12,6 +12,31 @@ class UserController {
       return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
     }
   }
+
+  async getById(req, res) { 
+    let { id } = req.params;
+
+    try {
+      let usuario = await UserModel.findById(id);
+      return res.send({status: 'OK', usuario});
+    } catch (error) {
+      return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
+    }
+  }  
+
+  async updateUser(req, res) { 
+    let { id } = req.params;
+
+    try {
+      let usuario = await UserModel.findByIdAndUpdate(id, req.body, {new: true})
+
+      if(!usuario) return res.status(400).send({status: 'OK', msg: 'Usuario no existe'});
+
+      return res.send({status: 'OK', usuario});
+    } catch (error) {
+      return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
+    }
+  }  
 }
 
 module.exports = new UserController();

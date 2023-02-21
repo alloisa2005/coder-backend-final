@@ -6,4 +6,8 @@ const { isLogged, isAdmin } = require('../middlewares/validaciones');
 
 router.get('/', isLogged, isAdmin, userController.getAll);
 
+router.get('/:id', isLogged, isAdmin, userController.getById);
+
+router.put('/:id', isLogged, isAdmin, userController.updateUser);
+
 module.exports = router;
