@@ -48,6 +48,19 @@ class UserController {
       return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
     }
   } 
+
+  async deleteUser(req, res) {
+    let { id } = req.params;
+
+    try {
+      let usuario = await UserModel.findByIdAndDelete(id)
+      if(!usuario) return res.status(404).send( {status: 'ERROR', result: `No existe usuario ID: ${id}`} )
+
+      return res.status(200).send({status: 'OK', usuario});
+    } catch (error) {
+      return res.send({status: 'ERROR', msg: 'Error al intentar completar la petición'});
+    }
+  }
 }
 
 module.exports = new UserController();

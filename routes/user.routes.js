@@ -12,5 +12,6 @@ router.post('/', isLogged, isAdmin, userController.createUser);
 
 router.put('/:id', isLogged, isAdmin, userController.updateUser);
 
+router.delete('/:id', isLogged, isAdmin, userController.deleteUser);
 
 module.exports = router;
