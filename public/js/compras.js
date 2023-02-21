@@ -30,7 +30,6 @@ async function cargoListaCompra(cart_id){
     
     lista = '';
     lista_prods.forEach( producto => {     
-      //console.log(producto);
 
       let prod_card = `
       <div class="mb-2 w-full flex items-center space-x-5">

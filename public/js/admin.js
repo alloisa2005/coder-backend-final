@@ -20,8 +20,7 @@ lista_cosas.addEventListener('click', async (e) => {
   }  
 
   // Nuevo Producto
-  if(e.target.classList.contains('img_add_prod')){
-    console.log(e.target);
+  if(e.target.classList.contains('img_add_prod')){    
     swalNew();
   }
 
@@ -237,7 +236,6 @@ async function cargarListaProductos() {
   let response = await fetch('/api/productos');
   let data = await response.json();
   let productos = data.result; 
-  //console.log(productos);
 
   lista_cosas.innerHTML = '';
   lista_cosas.innerHTML = cardProductoInicial();
