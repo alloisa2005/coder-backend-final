@@ -1,9 +1,11 @@
 
-let item_usuarios = document.getElementById('item_usuarios');
+let item_usuarios  = document.getElementById('item_usuarios');
 let item_productos = document.getElementById('item_productos');
 let item_compras   = document.getElementById('item_compras');
 let item_varios    = document.getElementById('item_varios');
 let lista_cosas    = document.getElementById('lista_cosas');
+let buscar_user    = document.getElementById('buscar_user');
+let buscar_prod    = document.getElementById('buscar_prod');
 
 lista_cosas.addEventListener('click', async (e) => {
   // Editar Producto
@@ -41,6 +43,9 @@ item_usuarios.addEventListener('click', (e) =>{
   quitarTick(item_compras);
   quitarTick(item_varios);    
 
+  buscar_user.classList.remove('hidden');
+  buscar_prod.classList.add('hidden');
+
   cargarListaUsuarios();
 })
 
@@ -50,6 +55,8 @@ item_productos.addEventListener('click', (e) =>{
   quitarTick(item_compras);
   quitarTick(item_varios);
 
+  buscar_user.classList.add('hidden');
+  buscar_prod.classList.remove('hidden');
   cargarListaProductos();
 })
 
@@ -59,6 +66,9 @@ item_compras.addEventListener('click', (e) =>{
   quitarTick(item_productos);
   quitarTick(item_varios);
 
+  buscar_user.classList.add('hidden');
+  buscar_prod.classList.add('hidden');
+
   lista_cosas.innerHTML = '';
 })
 
@@ -67,6 +77,9 @@ item_varios.addEventListener('click', (e) =>{
   quitarTick(item_usuarios);
   quitarTick(item_productos);
   quitarTick(item_compras);
+
+  buscar_user.classList.add('hidden');
+  buscar_prod.classList.add('hidden');
 
   lista_cosas.innerHTML = '';
 })

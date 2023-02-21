@@ -40,23 +40,29 @@
   </div>
   <!-- Fin NavBar --> 
 
-  <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
+  <div class="max-w-[1350px] mx-auto mt-8 px-4 "> 
     <div class="w-full text-center">
       <p class="text-3xl font-bold uppercase pb-2 text-white">Menú Administrador</p>      
       <div class="w-full h-[2px] bg-red-200"></div>
     </div>
 
-    <div class="pt-4 flex space-x-2">
+    <div class="pt-4 flex space-x-1">
       <div class="w-[15%]">
         <p class="font-bold text-xl">Opciones</p>
         <div class="flex flex-col pt-3 px-3">
-          <div class="flex items-center hover:cursor-pointer text-white font-bold">
-            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
-            <p id="item_usuarios" class="text-lg">Usuarios</p>          
+          <div class="flex flex-col hover:cursor-pointer text-white font-bold">
+            <div class="flex items-center">
+              <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+              <p id="item_usuarios" class="text-lg">Usuarios</p>          
+            </div>
+            <input id="buscar_user" class="my-1 hidden px-2 py-1 text-black rounded-md focus:outline-none" type="text" placeholder="Buscar nombre...">
           </div>
-          <div class="flex items-center hover:cursor-pointer text-white font-bold">
-            <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
-            <p id="item_productos" class="text-lg">Productos</p>          
+          <div class="flex flex-col hover:cursor-pointer text-white font-bold">
+            <div class="flex items-center">
+              <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
+              <p id="item_productos" class="text-lg">Productos</p>          
+            </div>
+            <input id="buscar_prod" class="my-1 hidden px-2 py-1 text-black rounded-md focus:outline-none" type="text" placeholder="Buscar vehículo...">
           </div>
           <div class="flex items-center hover:cursor-pointer text-white font-bold">
             <img class="hidden w-[17px] object-cover" src="/assets/tick.png" alt="Tick">
