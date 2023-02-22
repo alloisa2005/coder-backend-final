@@ -4,6 +4,7 @@ let item_productos = document.getElementById('item_productos');
 let item_compras   = document.getElementById('item_compras');
 let item_varios    = document.getElementById('item_varios');
 let lista_cosas    = document.getElementById('lista_cosas');
+let lista_compras  = document.getElementById('lista_compras');
 let buscar_user    = document.getElementById('buscar_user');
 let buscar_prod    = document.getElementById('buscar_prod');
 
@@ -41,6 +42,8 @@ item_usuarios.addEventListener('click', (e) =>{
   quitarTick(item_productos);
   quitarTick(item_compras);
   quitarTick(item_varios);    
+  lista_cosas.classList.remove('hidden');
+  lista_compras.classList.add('hidden');
 
   buscar_user.classList.remove('hidden');
   buscar_prod.classList.add('hidden');
@@ -52,7 +55,9 @@ item_productos.addEventListener('click', (e) =>{
   agregarTick(e);
   quitarTick(item_usuarios);
   quitarTick(item_compras);
-  quitarTick(item_varios);
+  quitarTick(item_varios);  
+  lista_cosas.classList.remove('hidden');
+  lista_compras.classList.add('hidden');
 
   buscar_user.classList.add('hidden');
   buscar_prod.classList.remove('hidden');
@@ -64,18 +69,23 @@ item_compras.addEventListener('click', (e) =>{
   quitarTick(item_usuarios);
   quitarTick(item_productos);
   quitarTick(item_varios);
+  lista_cosas.classList.add('hidden');
+  lista_compras.classList.remove('hidden');
 
   buscar_user.classList.add('hidden');
   buscar_prod.classList.add('hidden');
 
   lista_cosas.innerHTML = '';
+  cargarListaCompras();
 })
 
 item_varios.addEventListener('click', (e) =>{  
   agregarTick(e);
   quitarTick(item_usuarios);
   quitarTick(item_productos);
-  quitarTick(item_compras);
+  quitarTick(item_compras); 
+  lista_cosas.classList.remove('hidden'); 
+  lista_compras.classList.add('hidden');
 
   buscar_user.classList.add('hidden');
   buscar_prod.classList.add('hidden');
@@ -229,7 +239,6 @@ async function buscarUsuario(e) {
     lista_cosas.innerHTML += lista;
   }
 }
-///////////////////////////////////////////////////
 
 /////////////// P R O D U C T O S /////////////////
 async function cargarListaProductos() {
@@ -449,3 +458,48 @@ async function buscarProd(e) {
   }
 }
 
+///////////////// C O M P R A S /////////////////
+async function cargarListaCompras() {  
+  cargarFechas();
+  lista_cosas.innerHTML = '';
+
+  let search_bar = `
+    <div id="search_compras" class="max-w-[650px] mx-auto bg-red-500">
+      <p>JAJA</p>
+    </div>
+  `;
+
+  lista_cosas.innerHTML += search_bar;
+
+  let response = await fetch('/api/compras');
+  let data = await response.json();
+
+  /* let lista = '';
+  usuarios.forEach(user => {
+    lista += cardUser(user);
+  });
+  lista_cosas.innerHTML += lista;  */
+}
+
+function cargarFechas() {
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //Enero es 0
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  } 
+      
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("fch_desde").value = today;
+  document.getElementById("fch_hasta").value = today;
+  document.getElementById("fch_desde").setAttribute("max", today);
+  document.getElementById("fch_hasta").setAttribute("max", today);
+
+}

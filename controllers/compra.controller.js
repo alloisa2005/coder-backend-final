@@ -8,8 +8,8 @@ class CompraController {
   async getAll(req, res) {
 
     try {
-      let result = await CompraModel.find().populate('user').populate('cart')
-      return res.status(200).send(result);  
+      let compras = await CompraModel.find().populate('user').populate('cart')
+      return res.status(200).send(compras);  
 
     } catch (error) {
       return res.status(400).send( {status:'ERROR', result: error.message} );  
