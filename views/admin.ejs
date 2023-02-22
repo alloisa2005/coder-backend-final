@@ -78,15 +78,26 @@
       <div id="lista_cosas" class="w-[85%] px-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">                
       </div>
 
-      <div id="lista_compras" class="w-full p-2 hidden border-2 rounded-md">
+      <div id="lista_compras" class="w-full p-2 hidden border-2 border-gray-500 rounded-md">
         <div class="w-full mx-auto flex items-center justify-center space-x-4 text-lg">
-          <p class="text-white font-bold">Entre</p>
-          <input class="rounded-md px-2" id="fch_desde" type='date' min='1899-01-01' max='2023-02-26'></input>
-          <p class="text-white font-bold">y</p>
-          <input class="rounded-md px-2" id="fch_hasta" type='date' min='1899-01-01' max='2023-02-26'></input>
+          <p class="text-white font-bold text-xl">Entre</p>
+          <input class="rounded-md px-2 text-xl" id="fch_desde" type='date' min='1899-01-01' max='2023-02-26'></input>
+          <p class="text-white font-bold text-xl">y</p>
+          <input class="rounded-md px-2 text-xl" id="fch_hasta" type='date' min='1899-01-01' max='2023-02-26'></input>
           <img id="btn_buscar_compras" class="w-[30px] hover:cursor-pointer hover:scale-110 p-1 duration-300" src="/assets/search.jpg" alt="Buscar Compras">
         </div>
-      </div>
+        <div id="lista_compras_header" class="mt-6 w-[95%] mx-auto">
+          <div class="w-full my-3 px-6 py-2 flex items-center border-2 rounded-lg flex justify-between">
+            <div class="flex items-center">
+              <img src="/assets/search.jpg" class="w-[50px] object-cover mr-8" alt="Buscar Compras">
+              <p class="text-white text-2xl font-bold mr-10">Tony Allois</p>
+              <p class="text-white text-2xl font-bold mr-10">Fecha: 25/02/23</p>
+              <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">15000</span></p>
+            </div>
+            <img src="/assets/eye.png" class="w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
+          </div>                     
+        </div>
+      </div>      
     </div>
   </div>
 

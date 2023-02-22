@@ -550,3 +550,10 @@
 [2023-02-22T14:34:17.839] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
 [2023-02-22T14:35:59.173] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
 [2023-02-22T14:37:49.133] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-22T14:39:05.499] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Tony Allois logueado.
+[2023-02-22T14:40:15.239] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-22T14:40:22.270] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-22T14:40:28.199] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-22T14:43:19.246] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-22T15:00:31.267] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
+[2023-02-22T15:00:36.652] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: Tony Allois
