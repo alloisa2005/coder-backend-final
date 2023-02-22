@@ -53,6 +53,23 @@ class CompraController {
     } 
   } 
 
+  async getEntreFechas (req, res) {
+    let { desde, hasta } = req.query;
+    try {
+      let fch_desde = new Date(desde).toLocaleDateString(`fr-CA`).split('/').join('-');      
+      let fch_hasta = new Date(hasta).toLocaleDateString(`fr-CA`).split('/').join('-');            
+
+      let compras = await CompraModel.find({createdAt: {
+        $gte: `${fch_desde}T00:00:00.000Z`,
+        $lte: `${fch_hasta}T23:59:59.999Z`
+      }}).populate('user').populate('cart');
+
+      res.status(200).send({status:'OK', compras}); 
+
+    } catch (error) {
+      res.status(404).send({status:'ERROR', result: error.message}); 
+    }
+  }
 }
 
 module.exports = new CompraController();

@@ -6,6 +6,8 @@ const { isLogged } = require('../middlewares/validaciones');
 
 router.get('/', CompraController.getAll);
 
+router.get('/busqueda/fechas', CompraController.getEntreFechas);
+
 router.get('/myCompras', async (req, res) => {    
 
   try {                    
