@@ -7,6 +7,7 @@ let lista_cosas    = document.getElementById('lista_cosas');
 let lista_compras  = document.getElementById('lista_compras');
 let buscar_user    = document.getElementById('buscar_user');
 let buscar_prod    = document.getElementById('buscar_prod');
+let btn_buscar_compras = document.getElementById('btn_buscar_compras');
 
 lista_cosas.addEventListener('click', async (e) => {
   // Editar Producto
@@ -96,6 +97,13 @@ item_varios.addEventListener('click', (e) =>{
 buscar_user.addEventListener('keyup', buscarUsuario);
 
 buscar_prod.addEventListener('keyup', buscarProd);
+
+btn_buscar_compras.addEventListener('click', (e) => {
+  let fch_desde = document.getElementById("fch_desde").value;
+  let fch_hasta = document.getElementById("fch_hasta").value;
+  leoCompras(fch_desde, fch_hasta);
+});
+
 
 function agregarTick(e) {
   let padre = e.target.parentElement;
@@ -461,24 +469,28 @@ async function buscarProd(e) {
 ///////////////// C O M P R A S /////////////////
 async function cargarListaCompras() {  
   cargarFechas();
-  lista_cosas.innerHTML = '';
+  lista_cosas.innerHTML = '';    
 
-  let search_bar = `
-    <div id="search_compras" class="max-w-[650px] mx-auto bg-red-500">
-      <p>JAJA</p>
-    </div>
-  `;
+  let fch_desde = document.getElementById("fch_desde").value;
+  let fch_hasta = document.getElementById("fch_hasta").value;
+  leoCompras(fch_desde, fch_hasta);
+  
+  
 
-  lista_cosas.innerHTML += search_bar;
-
-  let response = await fetch('/api/compras');
-  let data = await response.json();
+  //let response = await fetch('/api/compras/busqueda/fechas');
+  //let data = await response.json();
 
   /* let lista = '';
   usuarios.forEach(user => {
     lista += cardUser(user);
   });
   lista_cosas.innerHTML += lista;  */
+}
+
+async function leoCompras(fch_desde, fch_hasta) {  
+  let response = await fetch(`/api/compras/busqueda/fechas/?desde=${fch_desde}&hasta=${fch_hasta}`);
+  let data = await response.json();
+  console.log(data);
 }
 
 function cargarFechas() {
