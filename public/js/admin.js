@@ -137,7 +137,7 @@ function cardUser(user){
   return `
       <div class="w-full ">
         <p class="hidden prod_id">${user._id}</p>
-        <img class="w-full h-[120px] object-cover rounded-lg overflow-x-hidden" src="${user.foto}" alt="${user.nombre}">
+        <img class="w-full h-[120px] object-cover rounded-lg overflow-x-hidden aspect-video" src="${user.foto}" alt="${user.nombre}">
         <div class="w-full flex items-center justify-between mt-2 px-1">
           <p class="text-lg font-bold text-white">${user.nombre}</p>          
           <a class="w-[25px] h-[25px] hover:bg-white hover:rounded-full duration-300 flex items-center justify-center" href="#"> 
