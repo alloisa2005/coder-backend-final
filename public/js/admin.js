@@ -8,6 +8,8 @@ let lista_compras  = document.getElementById('lista_compras');
 let buscar_user    = document.getElementById('buscar_user');
 let buscar_prod    = document.getElementById('buscar_prod');
 let btn_buscar_compras = document.getElementById('btn_buscar_compras');
+let lista_compras_header = document.getElementById('lista_compras_header');
+
 
 lista_cosas.addEventListener('click', async (e) => {
   // Editar Producto
@@ -488,9 +490,17 @@ async function cargarListaCompras() {
 }
 
 async function leoCompras(fch_desde, fch_hasta) {  
+  lista_compras_header.innerHTML = '';
+
   let response = await fetch(`/api/compras/busqueda/fechas/?desde=${fch_desde}&hasta=${fch_hasta}`);
   let data = await response.json();
-  console.log(data);
+  let compras = data.compras;
+  let lista_compras = '';
+  compras.forEach( compra => {
+    console.log(compra);
+    lista_compras += cardCompra(compra);
+  });
+  lista_compras_header.innerHTML = lista_compras;
 }
 
 function cargarFechas() {
@@ -514,4 +524,18 @@ function cargarFechas() {
   document.getElementById("fch_desde").setAttribute("max", today);
   document.getElementById("fch_hasta").setAttribute("max", today);
 
+}
+
+function cardCompra(compra) {
+  return `
+    <div class="w-full my-3 px-6 py-2 flex items-center border-2 rounded-lg flex justify-between">
+      <div class="flex items-center">
+        <img src="/assets/search.jpg" class="w-[50px] object-cover mr-8" alt="Buscar Compras">
+        <p class="text-white text-2xl font-bold mr-10">${compra.user.nombre}</p>
+        <p class="text-white text-2xl font-bold mr-10">Fecha: ${compra.createdAt}</p>
+        <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">${compra.subTotal}</span></p>
+      </div>
+      <img src="/assets/eye.png" class="w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
+    </div>
+  `;
 }
