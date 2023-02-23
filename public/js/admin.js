@@ -545,13 +545,17 @@ function cargarFechas() {
 }
 
 function cardCompra(compra) {
+  let fch = compra.createdAt.split('T')[0];
+  fch = fch.split('-');
+  let fecha = `${fch[2]}/${fch[1]}/${fch[0]}`;
+
   return `
     <div class="w-full my-3 px-6 py-2 flex items-center border-2 rounded-lg flex justify-between">
       <div class="flex items-center">
         <p class="hidden id_compra">${compra._id}</p>
         <img src="/assets/search.jpg" class="w-[50px] object-cover mr-8" alt="Buscar Compras">
         <p class="text-white text-2xl font-bold mr-10">${compra.user.nombre}</p>
-        <p class="text-white text-2xl font-bold mr-10">Fecha: ${compra.createdAt}</p>
+        <p class="text-white text-2xl font-bold mr-10">Fecha: ${fecha}</p>
         <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">${compra.cart.subTotal}</span></p>
       </div>
       <img src="/assets/eye.png" class="btn_eye w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
