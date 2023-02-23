@@ -20,7 +20,7 @@ class CompraController {
   async getCompraById(req, res) {
     let { id } = req.params;
     try {
-      let compra = await CompraModel.findById(id).populate('cart')
+      let compra = await CompraModel.findById(id).populate('cart').populate('user');
       return res.status(200).send(compra);
 
     } catch (error) {

@@ -9,7 +9,6 @@ let buscar_user    = document.getElementById('buscar_user');
 let buscar_prod    = document.getElementById('buscar_prod');
 let btn_buscar_compras = document.getElementById('btn_buscar_compras');
 let lista_compras_header = document.getElementById('lista_compras_header');
-let btn_cerrar_modal = document.getElementById('btn_cerrar_modal');
 
 lista_cosas.addEventListener('click', async (e) => {
   // Editar Producto
@@ -42,9 +41,7 @@ lista_cosas.addEventListener('click', async (e) => {
 
 lista_compras.addEventListener('click', detalleCompra);
 
-btn_cerrar_modal.addEventListener('click', (e) => {
-  document.getElementById('modal_compra').classList.add('hidden');
-});
+
 
 item_usuarios.addEventListener('click', (e) =>{  
   agregarTick(e);
@@ -514,10 +511,17 @@ async function detalleCompra(e) {
     let id_compra = e.target.parentElement.firstElementChild.firstElementChild.innerText.trim();
 
     let response = await fetch(`/api/compras/${id_compra}`);
-    let data = await response.json();
-    
-    document.getElementById('modal_compra').classList.remove('hidden');
-    console.log(data);
+    let compra = await response.json();    
+
+    let modal_compra = document.getElementById('modal_compra');
+    modal_compra.innerHTML = creoModal(compra); 
+    modal_compra.classList.remove('hidden');        
+
+    let btn_cerrar_modal = document.getElementById('btn_cerrar_modal');
+    btn_cerrar_modal.addEventListener('click', (e) => {
+      document.getElementById('modal_compra').classList.add('hidden');
+    });
+
   }  
 }
 
@@ -545,20 +549,70 @@ function cargarFechas() {
 }
 
 function cardCompra(compra) {
-  let fch = compra.createdAt.split('T')[0];
+  /* let fch = compra.createdAt.split('T')[0];
   fch = fch.split('-');
-  let fecha = `${fch[2]}/${fch[1]}/${fch[0]}`;
+  let fecha = `${fch[2]}/${fch[1]}/${fch[0]}`;   */
 
   return `
     <div class="w-full my-3 px-6 py-2 flex items-center border-2 rounded-lg flex justify-between">
       <div class="flex items-center">
         <p class="hidden id_compra">${compra._id}</p>
-        <img src="/assets/search.jpg" class="w-[50px] object-cover mr-8" alt="Buscar Compras">
+        <img src="${compra.user.foto}" class="w-[50px] h-[50px] rounded-full object-cover mr-8" alt="Buscar Compras">
         <p class="text-white text-2xl font-bold mr-10">${compra.user.nombre}</p>
-        <p class="text-white text-2xl font-bold mr-10">Fecha: ${fecha}</p>
+        <p class="text-white text-2xl font-bold mr-10">Fecha: <span class="text-red-400">${transformFecha(compra.createdAt)}</span></p>
         <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">${compra.cart.subTotal}</span></p>
       </div>
       <img src="/assets/eye.png" class="btn_eye w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
     </div>
   `;
 }
+
+
+////////////////// M O D A L //////////////////
+function creoModal(compra) {
+  return `
+    <div class="w-[50%]  bg-white p-4 rounded-lg text-black flex flex-col">
+      <p class="text-center text-2xl font-bold">Detalle de Compra</p>
+      <div class="px-20 py-3 flex items-center justify-between text-lg">
+        <p class="text-gray-600">Usuario: <span class="text-black font-bold">${compra.user.nombre}</span></p>
+        <p class="text-gray-600">Fecha: <span class="text-black font-bold">${transformFecha(compra.createdAt)}</span></p>
+        <p class="text-gray-600">Monto Total ($): <span class="text-black font-bold">${compra.cart.subTotal}</span></p>
+      </div>
+      <p class="text-gray-600 font-bold text-xl mb-2">Lista de Productos</p>
+      <div>
+        ${modalDetail(compra.cart.productos)}                
+        <div class="w-full p-3">
+          <p class="text-end text-xl font-bold">Total ($): ${compra.cart.subTotal}</p>
+        </div>
+
+        <div class="w-full flex justify-center">          
+          <p id="btn_cerrar_modal" class='text-lg uppercase border-2 border-black text-center w-[30%] bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer'>Cerrar</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function modalDetail(productos) {  
+  let lista = '';
+  productos.forEach( p => {
+    lista += `
+      <div class="border-2 rounded-lg w-full px-3 py-1 mt-2 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <img class="w-[100px] object-cover aspect-video" src="${p.foto}" alt="${p.nombre}">
+          <p>${p.nombre}</p>
+        </div>
+        <p>Cantidad: ${p.quantity}</p>
+        <p>SubTotal ($): ${p.quantity * p.price}</p>
+      </div>
+    `;
+  })
+  return lista;
+}
+
+function transformFecha(fecha) {
+  let fch = fecha.split('T')[0];
+  fch = fch.split('-');
+  return `${fch[2]}/${fch[1]}/${fch[0]}`;  
+}
+
