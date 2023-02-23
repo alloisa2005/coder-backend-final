@@ -10,4 +10,5 @@ const compraSchema = mongoose.Schema(
   }
 );
 
+
 module.exports = mongoose.model("Compra", compraSchema);

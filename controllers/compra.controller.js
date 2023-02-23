@@ -8,13 +8,25 @@ class CompraController {
   async getAll(req, res) {
 
     try {
-      let compras = await CompraModel.find().populate('user').populate('cart')
+      let compras = await CompraModel.find().populate('user').populate('cart');      
+
       return res.status(200).send(compras);  
 
     } catch (error) {
       return res.status(400).send( {status:'ERROR', result: error.message} );  
     }
   }  
+
+  async getCompraById(req, res) {
+    let { id } = req.params;
+    try {
+      let compra = await CompraModel.findById(id).populate('cart')
+      return res.status(200).send(compra);
+
+    } catch (error) {
+      return res.status(400).send( {status:'ERROR', result: error.message} );
+    }
+  }
 
   async getMyCompras(userId) {
 
@@ -61,7 +73,7 @@ class CompraController {
       let compras = await CompraModel.find({createdAt: {
         $gte: `${desde}T00:00:00.000Z`,
         $lte: `${hasta}T23:59:59.999Z`
-      }}).populate('user').populate('cart');
+      }}).populate('user').populate('cart');      
 
       res.status(200).send({status:'OK', compras}); 
 

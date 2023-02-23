@@ -9,7 +9,7 @@ let buscar_user    = document.getElementById('buscar_user');
 let buscar_prod    = document.getElementById('buscar_prod');
 let btn_buscar_compras = document.getElementById('btn_buscar_compras');
 let lista_compras_header = document.getElementById('lista_compras_header');
-
+let btn_cerrar_modal = document.getElementById('btn_cerrar_modal');
 
 lista_cosas.addEventListener('click', async (e) => {
   // Editar Producto
@@ -38,6 +38,12 @@ lista_cosas.addEventListener('click', async (e) => {
     let user = data.usuario;    
     swalEditUser(user);    
   }  
+});
+
+lista_compras.addEventListener('click', detalleCompra);
+
+btn_cerrar_modal.addEventListener('click', (e) => {
+  document.getElementById('modal_compra').classList.add('hidden');
 });
 
 item_usuarios.addEventListener('click', (e) =>{  
@@ -496,11 +502,23 @@ async function leoCompras(fch_desde, fch_hasta) {
   let data = await response.json();
   let compras = data.compras;
   let lista_compras = '';
-  compras.forEach( compra => {
-    console.log(compra);
+  compras.forEach( compra => {    
+    //console.log(compra._id);
     lista_compras += cardCompra(compra);
   });
   lista_compras_header.innerHTML = lista_compras;
+}
+
+async function detalleCompra(e) {  
+  if(e.target.classList.contains('btn_eye')){  // Si clickeamos sobre el "ojo"
+    let id_compra = e.target.parentElement.firstElementChild.firstElementChild.innerText.trim();
+
+    let response = await fetch(`/api/compras/${id_compra}`);
+    let data = await response.json();
+    
+    document.getElementById('modal_compra').classList.remove('hidden');
+    console.log(data);
+  }  
 }
 
 function cargarFechas() {
@@ -530,12 +548,13 @@ function cardCompra(compra) {
   return `
     <div class="w-full my-3 px-6 py-2 flex items-center border-2 rounded-lg flex justify-between">
       <div class="flex items-center">
+        <p class="hidden id_compra">${compra._id}</p>
         <img src="/assets/search.jpg" class="w-[50px] object-cover mr-8" alt="Buscar Compras">
         <p class="text-white text-2xl font-bold mr-10">${compra.user.nombre}</p>
         <p class="text-white text-2xl font-bold mr-10">Fecha: ${compra.createdAt}</p>
-        <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">${compra.subTotal}</span></p>
+        <p class="text-white text-2xl font-bold">Monto ($): <span class="text-red-400">${compra.cart.subTotal}</span></p>
       </div>
-      <img src="/assets/eye.png" class="w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
+      <img src="/assets/eye.png" class="btn_eye w-[40px] object-cover hover:cursor-pointer" alt="Buscar Compras">
     </div>
   `;
 }

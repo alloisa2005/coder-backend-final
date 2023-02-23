@@ -1,14 +1,16 @@
 const { Router } = require('express');
 const router = Router();
 const CompraController = require('../controllers/compra.controller');
-const { isLogged } = require('../middlewares/validaciones');
+const { isLogged, isAdmin } = require('../middlewares/validaciones');
 
 
 router.get('/', CompraController.getAll);
 
+router.get('/:id', CompraController.getCompraById);
+
 router.get('/busqueda/fechas', CompraController.getEntreFechas);
 
-router.get('/myCompras', async (req, res) => {    
+router.get('/myCompras', isLogged, async (req, res) => {    
 
   try {                    
     let compras = [];
