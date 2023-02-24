@@ -39,7 +39,31 @@
   </div>
   <!-- Fin NavBar --> 
 
-  <input id="input_msj" class="w-[300px]" type="text" placeholder="Mensaje (ENTER para enviar)">
+  <div class="max-w-[1350px] mt-6 mx-auto  px-4 "> 
+
+    <div class="w-full text-center pb-3">
+      <p class="text-3xl font-bold uppercase pb-2 text-white">mensajes de usuarios</p> 
+    </div>
+
+     <div class="w-full flex space-x-4">      
+      <div class="w-[15%] h-[calc(100vh-200px)] border-2 rounded-lg shadow-xl flex flex-col px-3 py-2">
+        <p class="text-center text-white text-2xl uppercase font-bold">Usuarios</p>
+        <div class="w-full h-[2px] bg-red-500 mb-3"></div>
+
+        <div class="text-white text-xl uppercase ">
+          <p class="p-1 hover:bg-red-500 hover:cursor-pointer">Juan</p>
+          <p class="p-1 hover:bg-red-500 hover:cursor-pointer">Pedro</p>
+          <p class="p-1 hover:bg-red-500 hover:cursor-pointer">Alvaro</p>
+        </div>
+      </div>
+
+      <div class="flex-1 border-2 text-center rounded-lg shadow-xl ">
+        <input id="input_msj" class="w-[300px]" type="text" placeholder="Mensaje (ENTER para enviar)">
+      </div>
+     </div> 
+
+    
+  </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
