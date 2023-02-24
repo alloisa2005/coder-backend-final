@@ -6,6 +6,7 @@ const session = require('express-session')
 const flash = require('express-flash');
 const passport = require('passport');
 const compression = require('compression');
+const { Server } = require('socket.io');
 
 const app = express();
 
@@ -42,6 +43,10 @@ app.use('/api/productos', require('./routes/product.routes'));
 app.use('/api/carrito', require('./routes/carrito.routes'));   
 app.use('/', require('./routes/login.routes'));
 app.use('/api/compras', require('./routes/compra.routes'));
+app.use('/api/chat', require('./routes/chat.routes'));
 app.use('/api/admin', require('./routes/admin.routes'));
 
-app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));
+const servidor = app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));
+
+const io = new Server(servidor)
+app.set('socketio', io);

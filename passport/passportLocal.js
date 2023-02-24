@@ -12,7 +12,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser( async(id, done) => {
-  const user = await UserModel.findById(id);
+  // Quito el password, así no queda en el req.user
+  const user = await UserModel.findById(id).select('-password');
   done(null, user);
 });
 
