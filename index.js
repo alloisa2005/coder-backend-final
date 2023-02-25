@@ -43,44 +43,9 @@ app.use('/api/productos', require('./routes/product.routes'));
 app.use('/api/carrito', require('./routes/carrito.routes'));   
 app.use('/', require('./routes/login.routes'));
 app.use('/api/compras', require('./routes/compra.routes'));
-app.use('/api/chat', require('./routes/chat.routes'));
 app.use('/api/admin', require('./routes/admin.routes'));
 
 const servidor = app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));
 
 const io = new Server(servidor)
 
-const ChatModel = require('./models/Chat.model')
-// SOCKET IO - CHAT
-io.on('connection', async (socket) => {    
-  
-  // mostrar la lista de mensajes
-  const mensajes = await ChatModel.find();   
-  console.log(mensajes);
-  socket.emit('msj-lista', mensajes)
-
-  // Cuando se envía un msj de chat
-  socket.on('message', async (data) => {        
-    let userChat = await ChatModel.findOne({user: data.userId})    
-    
-    if(!userChat) {
-      let message = [{sender: data.userId, text: data.msg}];
-      let newChat = new ChatModel({ user: data.userId, message });
-      await newChat.save();
-    }else{
-      let mensajes = userChat.message;
-      console.log(mensajes);
-      mensajes.push({
-        sender: data.userId,
-        text: data.msg
-      })
-      await ChatModel.findByIdAndUpdate(userChat._id, { message: mensajes });
-    }
-
-  })
-})
-
-async function getMyMsjs() {
-  let misMensajes = await ChatModel.find(); 
-  return misMensajes;
-}

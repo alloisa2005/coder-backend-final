@@ -10,9 +10,10 @@ router.get('/:id', CompraController.getCompraById);
 
 router.get('/busqueda/fechas', CompraController.getEntreFechas);
 
-router.get('/myCompras', isLogged, async (req, res) => {    
+router.get('/myCompras', async (req, res) => {    
 
-  try {                    
+  console.log(req.user);
+  /* try {                    
     let compras = [];
     let misCompras = await CompraController.getMyCompras(req.user._id);          
     
@@ -24,7 +25,7 @@ router.get('/myCompras', isLogged, async (req, res) => {
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
-  } 
+  }  */
 });
 
 router.post('/', isLogged, CompraController.newCompra);
