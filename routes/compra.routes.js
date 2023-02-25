@@ -4,14 +4,13 @@ const CompraController = require('../controllers/compra.controller');
 const { isLogged, isAdmin } = require('../middlewares/validaciones');
 
 
-router.get('/', CompraController.getAll);
+router.get('/', isLogged, CompraController.getAll);
 
-router.get('/:id', CompraController.getCompraById);
+router.get('/detail/:id', isLogged, CompraController.getCompraById);
 
-router.get('/busqueda/fechas', CompraController.getEntreFechas);
+router.get('/busqueda/fechas', isLogged, CompraController.getEntreFechas);
 
-router.get('/myCompras', isLogged, async (req, res) => {    
-
+router.get('/myCompras', isLogged, async (req, res) => {      
   try {                    
     let compras = [];
     let misCompras = await CompraController.getMyCompras(req.user._id);          

@@ -510,7 +510,7 @@ async function detalleCompra(e) {
   if(e.target.classList.contains('btn_eye')){  // Si clickeamos sobre el "ojo"
     let id_compra = e.target.parentElement.firstElementChild.firstElementChild.innerText.trim();
 
-    let response = await fetch(`/api/compras/${id_compra}`);
+    let response = await fetch(`/api/compras/detail/${id_compra}`);
     let compra = await response.json();    
 
     let modal_compra = document.getElementById('modal_compra');

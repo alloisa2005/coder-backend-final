@@ -28,8 +28,7 @@ class CompraController {
     }
   }
 
-  async getMyCompras(userId) {
-
+  async getMyCompras(userId) {    
     try {
 
       let result = await CompraModel.find({user: userId}).populate('cart')
