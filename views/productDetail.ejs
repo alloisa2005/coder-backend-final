@@ -22,10 +22,13 @@
               <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
                 <a href="/api/compras/myCompras">Mis Compras</a>
               </li>
+              <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
+                <a href="/api/chat">Chat</a>
+              </li>
               <% if (user.isAdmin === 'S') { %>
                 <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">                
                   <a href="/api/admin" class="w-full flex items-center space-x-3">
-                    <img class="h-[30px] object-cover" src="/assets/aaa.png" alt="Settings Icon">
+                    <img class="h-[25px] object-cover" src="/assets/aaa.png" alt="Settings Icon">
                     <p>Admin</p>
                   </a>
                 </li>

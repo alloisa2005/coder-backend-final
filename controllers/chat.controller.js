@@ -20,7 +20,7 @@ class ChatController {
     let { userId } = req.params;
 
     try {      
-      let result = await ChatModel.find({user: userId});            
+      let result = await ChatModel.find({sender: userId});            
       return res.status(200).send({status:'OK', result }); 
 
     } catch (error) {
