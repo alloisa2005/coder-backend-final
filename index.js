@@ -48,3 +48,22 @@ app.use('/api/admin', require('./routes/admin.routes'));
  
 const servidor = app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));
 
+const io = new Server(servidor);
+
+const Chat = require('./models/Chat.model');
+
+io.on('connection', socket => {   
+
+  socket.on('message', async (data) => {
+    let newMessage = new Chat({
+      sender: data.userId,
+      receiver: data.userId,
+      mensaje: data.mensaje
+    });
+    await newMessage.save();
+
+    let mensajes = await Chat.find({ $or: [{sender: data.userId}, {receiver: data.userId} ] })
+    socket.emit('lista-mensajes', mensajes);
+  })
+
+});

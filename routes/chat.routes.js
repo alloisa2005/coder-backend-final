@@ -8,5 +8,6 @@ router.get('/', isLogged, (req,res) => {
   res.render('chat.ejs', { title: 'Chat Page', user: req.user } )
 });
 
+router.get('/:id', isLogged, chatController.getUserMensajes);
 
 module.exports = router;
