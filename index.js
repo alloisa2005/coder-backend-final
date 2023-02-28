@@ -54,15 +54,23 @@ const Chat = require('./models/Chat.model');
 
 io.on('connection', socket => {   
 
-  socket.on('message', async (data) => {
+  Chat.find()
+    .then( mensajes => {
+      socket.emit('lista-mensajes', mensajes)
+    })
+    
+
+  socket.on('message', async (data) => {    
+
     let newMessage = new Chat({
       sender: data.userId,
-      receiver: data.userId,
+      receiver: data.admin === 'S' ? data.userId : null, //data.userId,
       mensaje: data.mensaje
     });
     await newMessage.save();
 
-    let mensajes = await Chat.find({ $or: [{sender: data.userId}, {receiver: data.userId} ] })
+    //let mensajes = await Chat.find({ $or: [{sender: data.userId}, {receiver: data.userId} ] })
+    let mensajes = await Chat.find()
     socket.emit('lista-mensajes', mensajes);
   })
 

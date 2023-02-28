@@ -3,12 +3,13 @@ const socket = io();
 
 let msj_usr= document.getElementById('msj_usr');
 let user_id = document.getElementsByClassName('user_id')[0];
+let user_admin = document.getElementsByClassName('user_admin')[0];
 let lista_mensajes= document.getElementById('lista_mensajes');
 
 // Cuando se envia un msj en el chat (Tecla ENTER)
 msj_usr.addEventListener('keyup', (e) => {
   if(e.key === 'Enter'){       
-    socket.emit('message', {userId: user_id.innerText.trim(), mensaje: msj_usr.value.trim()});
+    socket.emit('message', {userId: user_id.innerText.trim(), mensaje: msj_usr.value.trim(), admin: user_admin.innerText.trim()});
     msj_usr.value = '';         
   }
 });
@@ -19,7 +20,7 @@ socket.on('lista-mensajes', (mensajes) => {
 
   for (let i = 0; i < mensajes.length; i++) {
     const msj = mensajes[i];
-    if(msj.sender === msj.receiver){
+    if(msj.sender === user_id.innerText.trim()){  // msj.receiver
       lista += cardMensajeDerecha(msj);
     } else {
       lista += cardMensajeIzquierda(msj);

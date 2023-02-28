@@ -58,6 +58,7 @@
       <!-- Escribir un mensaje -->
       <div class="w-full">
         <p class="user_id hidden"><%= user._id %></p>
+        <p class="user_admin hidden"><%= user.isAdmin %></p>
         <input id="msj_usr" class="w-full px-2 py-3 text-md outline-none" type="text" name="mensaje" id="mensaje" placeholder="Escribe tu mensaje (ENTER para enviar)">
       </div>
     </div>
