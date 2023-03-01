@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const ChatModel = require('../models/Chat.model')
-
+const UserModel = require('../models/User.model')
 
 class ChatController {
 
@@ -24,7 +24,25 @@ class ChatController {
       return res.status(200).send({status:'OK', result }); 
 
     } catch (error) {
-      return {status:'ERROR', result: error.message};
+      return res.status(400).send( {status:'ERROR', result: error.message} );
+    }
+  }
+
+  async getListaUsuarios(req, res){
+
+    try {      
+
+      let result = await ChatModel.aggregate().sortByCount("sender");
+      for (let i = 0; i < result.length; i++) {
+        const element = result[i];
+        let user = await UserModel.findById(element._id)
+        element.user = user;
+      }            
+      
+      return res.status(200).send({status:'OK', result }); 
+      
+    } catch (error) {
+      return res.status(400).send( {status:'ERROR', result: error.message} );
     }
   }
 
