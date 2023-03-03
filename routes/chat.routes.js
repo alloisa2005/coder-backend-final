@@ -14,6 +14,6 @@ router.get('/admin', isLogged, isAdmin, (req,res) => {
 
 router.get('/users', isLogged, isAdmin, chatController.getListaUsuarios)
 
-//router.get('/:id', isLogged, chatController.getUserMensajes);
+router.get('/mensajes/:userId', isLogged, chatController.getUserMensajes);
 
 module.exports = router;

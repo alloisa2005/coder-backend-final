@@ -20,7 +20,7 @@ socket.on('lista-mensajes', (mensajes) => {
 
   for (let i = 0; i < mensajes.length; i++) {
     const msj = mensajes[i];
-    if(msj.sender === user_id.innerText.trim()){ 
+    if(msj.receiver === null){ 
       lista += cardMensajeDerecha(msj);
     } else {
       lista += cardMensajeIzquierda(msj);
