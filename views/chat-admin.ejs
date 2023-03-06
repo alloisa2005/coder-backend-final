@@ -22,10 +22,7 @@
             </li>
             <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
               <a href="/api/compras/myCompras">Mis Compras</a>
-            </li>
-            <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">              
-              <a href="/api/chat">Chat</a>
-            </li>
+            </li>            
             <% if (user.isAdmin === 'S') { %>
               <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">                
                 <a href="/api/admin" class="w-full flex items-center space-x-3">
@@ -62,10 +59,10 @@
       <!-- Lista de mensajes -->
       <div class="flex-1 h-full border-2 rounded-lg shadow-xl p-2">
         <div class="flex h-full flex-col">
-          <div id="msj_list" class="h-full flex-1"></div>
+          <div id="msj_list" class="h-full flex-1 overflow-y-scroll"></div>
   
           <div>
-            <input id="msj_usr" class="w-full px-2 py-3 text-md outline-none" type="text" name="mensaje" id="mensaje" placeholder="Escribe tu mensaje (ENTER para enviar)">
+            <input id="msj_usr" class="w-full px-2 py-3 text-md outline-none rounded-lg mt-2" type="text" name="mensaje" id="mensaje" placeholder="Escribe tu mensaje (ENTER para enviar)">
           </div>
         </div>
       </div>

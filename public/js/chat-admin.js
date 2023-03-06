@@ -19,18 +19,20 @@ lista_usuarios.addEventListener('click', async (e) => {
     msj_list.innerHTML = '';
     let lista = '';
     for (let i = 0; i < mensajes.length; i++) {
-      const msj = mensajes[i];
-      console.log(msj);
+      const msj = mensajes[i];      
+      console.log(msj.sender, admin_id.innerText.trim());
 
-      if(msj.sender === admin_id){
+      if(msj.receiver === null){
         lista += `
-        <div class="w-full text-end">
-          <p class="text-white text-lg">${msj.mensaje}</p>
+        <div class="w-full px-2 my-1 border-2 border-white rounded-md flex items-center">
+          <p class="text-white text-lg text-right">${msj.mensaje}</p>
+          <div class="flex-1"></div>
         </div>
       `;
       } else {
         lista += `
-          <div class="w-full text-start">
+          <div class="w-full px-2 my-1 border-2 border-white rounded-md flex items-center">            
+            <div class="flex-1"></div>
             <p class="text-white text-lg">${msj.mensaje}</p>
           </div>
         `;
@@ -44,23 +46,13 @@ lista_usuarios.addEventListener('click', async (e) => {
 msj_usr.addEventListener('keyup', (e) => {
   if(e.key === 'Enter'){       
     socket.emit('message', {userId: id_user.trim(), mensaje: msj_usr.value.trim(), admin: 'S'});
-    msj_usr.value = '';         
+    msj_usr.value = ''; 
+    msj_list.innerHTML = '';        
   }
 });
 
-socket.on('lista-mensajes', (mensajes) => {
-  msj_list.innerHTML = '';
-  let lista = '';  
-
-  for (let i = 0; i < mensajes.length; i++) {
-    const msj = mensajes[i];
-    if(msj.receiver === null){ 
-      lista += cardMensajeIzquierda(msj);
-    } else {
-      lista += cardMensajeDerecha(msj);
-    }
-  }
-  msj_list.innerHTML = lista;
+socket.on('lista-mensajes-admin', (mensajes) => {
+  msj_list.innerHTML = '';  
 });
 
 async function leoUsuarios() {

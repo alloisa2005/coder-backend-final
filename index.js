@@ -59,7 +59,7 @@ io.on('connection', socket => {
       socket.emit('lista-mensajes', mensajes)
     });    
 
-  socket.on('message', async (data) => {    
+  socket.on('message', async (data) => {        
 
     let newMessage = new Chat({
       sender: data.userId,
@@ -68,8 +68,9 @@ io.on('connection', socket => {
     });
     await newMessage.save();
     
-    let mensajes = await Chat.find()
-    socket.emit('lista-mensajes', mensajes);
+    let mensajes = await Chat.find()    
+    socket.emit('lista-mensajes', mensajes);    
+    socket.emit('lista-mensajes-admin', mensajes);
   })
 
 });

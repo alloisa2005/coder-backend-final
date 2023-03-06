@@ -2,7 +2,7 @@
 let item_usuarios  = document.getElementById('item_usuarios');
 let item_productos = document.getElementById('item_productos');
 let item_compras   = document.getElementById('item_compras');
-let item_varios    = document.getElementById('item_varios');
+let item_chat      = document.getElementById('item_chat');
 let lista_cosas    = document.getElementById('lista_cosas');
 let lista_compras  = document.getElementById('lista_compras');
 let buscar_user    = document.getElementById('buscar_user');
@@ -47,7 +47,7 @@ item_usuarios.addEventListener('click', (e) =>{
   agregarTick(e);
   quitarTick(item_productos);
   quitarTick(item_compras);
-  quitarTick(item_varios);    
+  quitarTick(item_chat);    
   lista_cosas.classList.remove('hidden');
   lista_compras.classList.add('hidden');
 
@@ -61,7 +61,7 @@ item_productos.addEventListener('click', (e) =>{
   agregarTick(e);
   quitarTick(item_usuarios);
   quitarTick(item_compras);
-  quitarTick(item_varios);  
+  quitarTick(item_chat);  
   lista_cosas.classList.remove('hidden');
   lista_compras.classList.add('hidden');
 
@@ -74,7 +74,7 @@ item_compras.addEventListener('click', (e) =>{
   agregarTick(e);
   quitarTick(item_usuarios);
   quitarTick(item_productos);
-  quitarTick(item_varios);
+  quitarTick(item_chat);
   lista_cosas.classList.add('hidden');
   lista_compras.classList.remove('hidden');
 
@@ -85,7 +85,7 @@ item_compras.addEventListener('click', (e) =>{
   cargarListaCompras();
 })
 
-item_varios.addEventListener('click', (e) =>{  
+item_chat.addEventListener('click', (e) =>{  
   agregarTick(e);
   quitarTick(item_usuarios);
   quitarTick(item_productos);
@@ -97,6 +97,7 @@ item_varios.addEventListener('click', (e) =>{
   buscar_prod.classList.add('hidden');
 
   lista_cosas.innerHTML = '';
+  window.location.assign('/api/chat/admin');
 })
 
 buscar_user.addEventListener('keyup', buscarUsuario);

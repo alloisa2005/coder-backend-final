@@ -14,7 +14,8 @@ msj_usr.addEventListener('keyup', (e) => {
   }
 });
 
-socket.on('lista-mensajes', (mensajes) => {
+socket.on('lista-mensajes', (mensajes) => {  
+
   lista_mensajes.innerHTML = '';
   let lista = '';  
 
