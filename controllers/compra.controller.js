@@ -49,12 +49,39 @@ class CompraController {
       await compra.save();
       await CartModel.findByIdAndUpdate(cartId, {activo: false});
 
-      let newCompra = await CompraModel.findById(compra._id).populate('user'); 
+      let newCompra = await CompraModel.findById(compra._id).populate('user cart'); 
 
       //Finalizo el carrito cambiando activo a FALSE      
       if(newCompra){      
         await CartModel.findByIdAndUpdate(cartId, {activo: false});
-        let mensaje = `<div><h2>Bienvenido/a</h2><p>Gracias por registrarte en Ecommerce Back, puedes visitar la tienda cuando gustes.</p><a href="#">www.tienda-back.com</a></div>`;
+
+        let productosCompra = newCompra.cart.productos;
+        let totalCompra = newCompra.cart.subTotal;
+
+        let lista = '';
+
+        for (let i = 0; i < productosCompra.length; i++) {
+          const prod = productosCompra[i];
+          lista += `
+            <div>
+              <p>Producto: ${prod.nombre}</p>
+              <p>Cantidad: ${prod.quantity}</p>
+              <p>SubTotal: ${prod.quantity * prod.price}</p>
+            </div>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+          `;
+        }
+        let mensaje = `<div>
+          <h2>Detalle de su compra</h2>
+          <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+          <div>
+            ${lista}
+          </div>
+          <div>
+            <h4>Monto Total ($): ${totalCompra}</h4>
+          </div>
+          <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        </div>`;
         enviarMail(req.user.email, 'Detalle de Compra', mensaje)      
       }            
       return res.status(200).send({status: 'OK', result: newCompra});          
