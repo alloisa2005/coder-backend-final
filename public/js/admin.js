@@ -500,8 +500,7 @@ async function leoCompras(fch_desde, fch_hasta) {
   let data = await response.json();
   let compras = data.compras;
   let lista_compras = '';
-  compras.forEach( compra => {    
-    //console.log(compra._id);
+  compras.forEach( compra => {        
     lista_compras += cardCompra(compra);
   });
   lista_compras_header.innerHTML = lista_compras;

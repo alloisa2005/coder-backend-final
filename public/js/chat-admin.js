@@ -74,8 +74,7 @@ async function leoUsuarios() {
   lista_usuarios.innerHTML = '';
   let lista = '';
   for (let i = 0; i < usuarios.length; i++) {
-    const usuario = usuarios[i].user;
-    //console.log(usuario);
+    const usuario = usuarios[i].user;    
     if(usuario._id !== admin_id.innerText.trim()){  // No muestro al usuario admin
       lista += `
         <div class="flex">

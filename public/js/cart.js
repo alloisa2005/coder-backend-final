@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let card_carrito = e.target.parentElement.parentElement.parentElement;
     
     let id_cart = card_carrito.getElementsByClassName('id_cart')[0].innerText.trim();
-    let id_prod = card_carrito.getElementsByClassName('id_product')[0].innerText.trim();        
+    let id_prod = card_carrito.getElementsByClassName('id_product')[0].innerText.trim();            
 
     let result = await fetch(`/api/carrito/${id_cart}/productos/${id_prod}`, { 
       method: 'DELETE', 
@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       'Content-Type': 'application/json; charset=UTF-8'
       } 
     });    
-    let data = await result.json();     
+    let data = await result.json();       
+
     if(data.status === 'OK'){
       loadCarrito();
     }
