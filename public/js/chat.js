@@ -20,20 +20,21 @@ socket.on('lista-mensajes', (mensajes) => {
   let lista = '';  
 
   for (let i = 0; i < mensajes.length; i++) {
-    const msj = mensajes[i];
+    const msj = mensajes[i];    
     if(msj.receiver === null){ 
       lista += cardMensajeDerecha(msj);
     } else {
       lista += cardMensajeIzquierda(msj);
     }
   }
-  lista_mensajes.innerHTML = lista;
+  lista_mensajes.innerHTML = lista;  
 });
 
 function cardMensajeIzquierda(msj){
   return `
     <div class="my-2 border-2 rounded-lg">      
-      <p class="p-2 text-white text-start">${msj.mensaje}</p>
+      <p class="px-2 text-lg text-white text-start">${msj.mensaje}</p>
+      <p class="px-2 pb-1 text-sm text-gray-300 text-start">Enviado: ${transformFecha(msj.createdAt)}</p>
     </div>
   `;
 }
@@ -41,7 +42,14 @@ function cardMensajeIzquierda(msj){
 function cardMensajeDerecha(msj){
   return `
     <div class="my-2 border-2 rounded-lg">      
-      <p class="p-2 text-white text-end">${msj.mensaje}</p>
+      <p class="px-2 text-lg text-white text-end">${msj.mensaje}</p>
+      <p class="px-2 pb-1 text-sm text-gray-300 text-end">Enviado: ${transformFecha(msj.createdAt)}</p>
     </div>
   `;
+}
+
+function transformFecha(fecha) {
+  let fch = fecha.split('T')[0];
+  fch = fch.split('-');
+  return `${fch[2]}/${fch[1]}/${fch[0]}`;  
 }
