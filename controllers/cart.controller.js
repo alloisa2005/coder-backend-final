@@ -51,10 +51,11 @@ class CartController {
 
       let response = await ProductController.getById(prod_id);
       let prod_stock = response.result.stock;
+      
       prod_stock-= 1;
-      await ProductController.editProduct(prod_id, {stock: prod_stock})  
+      let prod_updated = await ProductController.editProduct(prod_id, {stock: prod_stock})        
 
-      return {status:'OK', prod_id };
+      return {status:'OK', prod_id, prod_updated };
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }
@@ -94,9 +95,9 @@ class CartController {
 
       let prod_stock = response.result.stock;
       prod_stock-= 1;
-      let jaja = await ProductController.editProduct(prod_id, {stock: prod_stock})      
+      let prod_updated = await ProductController.editProduct(prod_id, {stock: prod_stock})      
 
-      return {status:'OK', result:resp};
+      return {status:'OK', result:resp, prod_updated};
 
     } catch (error) {
       return {status:'ERROR', result: error.message};

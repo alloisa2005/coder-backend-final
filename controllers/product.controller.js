@@ -1,7 +1,7 @@
 const ProductModel = require('../models/Product.model');
 const { logger_info } = require('../logs/files/log_config');
 
-class ProductController {
+class ProductController {  
 
   async getAll() {
 

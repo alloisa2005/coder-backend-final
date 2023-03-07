@@ -1,4 +1,5 @@
 
+let prod_stock_el = document.getElementById('prod_stock');
 let btn_add = document.getElementById('btn_add');
 btn_add.addEventListener('click', addToCart);
 
@@ -29,9 +30,10 @@ async function addToCart(event) {
     }, 
     body: JSON.stringify({producto}) 
   });
-  let data = await response.json();
-  
-  if(data.status === 'OK') {          
+  let data = await response.json();        
+
+  if(data.status === 'OK') {      
+    prod_stock_el.innerText = `Stock: ${data.prod_updated.result.stock}`        
     swal(prod_nombre, "¡añadido al carrito!", "success", {
       button: "Aceptar",
     });
