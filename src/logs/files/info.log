@@ -923,3 +923,12 @@
 [2023-03-07T12:22:14.796] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-03-07T12:23:04.673] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
 [2023-03-07T12:24:42.264] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:28:18.525] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:28:54.362] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:31:02.899] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: User Admin logueado.
+[2023-03-07T12:31:08.267] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: User Admin
+[2023-03-07T12:31:18.537] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:34:16.977] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:35:00.464] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:36:09.697] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.
+[2023-03-07T12:38:12.398] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro logueado.

@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imagen = imagenes[i];
     imagen.addEventListener('click', (e) => {
       let card = e.target.parentElement;
-      let id_prod = card.getElementsByClassName('prod_id')[0].innerText;
-      
+      let id_prod = card.getElementsByClassName('prod_id')[0].innerText;      
     });
   }
 

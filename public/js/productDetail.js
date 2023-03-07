@@ -1,5 +1,5 @@
 
-let prod_stock_el = document.getElementById('prod_stock');
+let prod_stock_el = document.getElementById('prod_stock_el');
 let btn_add = document.getElementById('btn_add');
 btn_add.addEventListener('click', addToCart);
 
@@ -32,8 +32,13 @@ async function addToCart(event) {
   });
   let data = await response.json();        
 
+  let stock_prod = data.prod_updated.result.stock; //btn_add
   if(data.status === 'OK') {      
-    prod_stock_el.innerText = `Stock: ${data.prod_updated.result.stock}`        
+    prod_stock_el.innerText = `Stock: ${stock_prod}`
+    // Si el stock es 0 (cero) oculto el botón de "Agregar al Carrito"
+    if(stock_prod <= 0) {
+      btn_add.classList.add('hidden');
+    }
     swal(prod_nombre, "¡añadido al carrito!", "success", {
       button: "Aceptar",
     });

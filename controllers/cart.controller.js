@@ -54,7 +54,7 @@ class CartController {
       
       prod_stock-= 1;
       let prod_updated = await ProductController.editProduct(prod_id, {stock: prod_stock})        
-
+      
       return {status:'OK', prod_id, prod_updated };
     } catch (error) {
       return {status:'ERROR', result: error.message};

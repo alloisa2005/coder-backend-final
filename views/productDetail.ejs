@@ -44,7 +44,8 @@
 
     <p id="prod_id" class="hidden"><%= producto._id %> </p>
     <p id="prod_desc" class="hidden"><%= producto.descripcion %> </p>
-    <p id="prod_codigo" class="hidden"><%= producto.codigo %> </p>    
+    <p id="prod_codigo" class="hidden"><%= producto.codigo %> </p>  
+    <p id="prod_stock" class="hidden"><%= producto.stock %> </p>   
     <img id="prod_foto" class="w-full h-full object-cover" src="<%= producto.foto %> " alt="<%= producto.nombre %> ">
     <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
     <div class="absolute top-0 left-0 right-0 z-20 max-w-[1300px] h-full mx-auto flex items-center justify-start">
@@ -76,9 +77,11 @@
 
     <div class="w-full py-12 flex items-center space-x-12">
       <p id="prod_precio" class="text-3xl">Precio ($): <%= producto.precio %> </p>
-      <p id="prod_stock" class="text-3xl">Stock: <%= producto.stock %> </p>
+      <p id="prod_stock_el" class="text-3xl">Stock: <%= producto.stock %> </p>
       <div class="w-[15%]">
-        <input id="btn_add" class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
+        <% if (producto.stock > 0) { %>         
+          <input id="btn_add" class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
+        <% } %>
       </div> 
     </div> 
 
