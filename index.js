@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session')
 const flash = require('express-flash');
+const session = require('express-session')
 const passport = require('passport');
 const compression = require('compression');
 const { Server } = require('socket.io');
