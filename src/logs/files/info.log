@@ -936,3 +936,4 @@
 [2023-03-07T15:37:19.342] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: user1@gmail.com - User: User Uno registrado.
 [2023-03-07T15:40:10.702] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: user1@gmail.com - User: User Uno logueado.
 [2023-03-07T15:40:57.692] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: user1@gmail.com - User: User Uno logueado.
+[2023-03-08T10:38:22.729] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Pepe Castro registrado.
